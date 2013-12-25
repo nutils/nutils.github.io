@@ -1,8 +1,9 @@
-name: GJvZ web dump
-author: Gertjan van Zwieten
-email: gertjanvanzwieten@gmail.com
-domain: gjvz.nl
-google_id: UA-42595236-1
+name: $name
+shortname: $shortname
+author: $author
+email: $email
+domain: $domain
+google_id: $google_id
 
 markdown: redcarpet
 pygments: true

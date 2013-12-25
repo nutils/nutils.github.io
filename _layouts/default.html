@@ -21,13 +21,12 @@
       ga('create', '{{ site.google_id }}', '{{ site.domain }}');
       ga('send', 'pageview');
     </script>
-    <title>GJvZ {{ page.title }}</title>
+    <title>{{ site.shortname }} {{ page.title }}</title>
   </head>
   <body>
     <div id="header_wrap" class="outer">
       <header class="inner">
-        <div id="forkme_banner"><a href="https://github.com/nutils">View on GitHub</a></div>
-        <h1>GJvZ web dump</h1>
+        <h1>{{ site.name }}</h1>
         <div id="tabbar">
         {% for tab in site.tabs %}<a href="{{ tab.url }}" {% if page.title == tab.title %}class="select"{% endif %}>
           {{ tab.title | downcase }}
