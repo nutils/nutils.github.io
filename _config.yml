@@ -1,0 +1,14 @@
+name: GJvZ web dump
+author: Gertjan van Zwieten
+email: gertjanvanzwieten@gmail.com
+domain: gjvz.nl
+google_id: UA-42595236-1
+
+markdown: redcarpet
+pygments: true
+paginate: 5
+permalink: none
+
+tabs:
+  - title: Posts
+    url: /

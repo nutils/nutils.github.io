@@ -1,0 +1,142 @@
+/***( GENERAL )***/
+
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: small;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #222;
+  color: #eee;
+}
+
+a {
+  text-decoration: none;
+  color: #007edf;
+  text-shadow: none;
+}
+
+.outer {
+  width: 100%;
+}
+
+.inner {
+  position: relative;
+  max-width: 600px;
+  padding: 20px 10px;
+  padding-bottom: 0px;
+  margin: 0 auto;
+}
+
+
+/***( HEADER CONTENT )***/
+
+
+#header_wrap h1 {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+
+#tabbar {
+  font-size: large;
+  margin-left: -9px;
+}
+
+#tabbar a {
+  color: inherit;
+  padding: 0px 9px;
+  margin: 0px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+}
+
+#tabbar a.select {
+  background-color: #eee;
+  color: #222;
+}
+
+#forkme_banner {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  z-index: 10;
+  padding: 10px 50px 10px 10px;
+  background: url('../images/blacktocat.png') #0090ff no-repeat 95% 50%;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+#forkme_banner a {
+  color: inherit;
+}
+
+/***( MAIN CONTENT )***/
+
+
+#main_content_wrap {
+  padding-bottom: 10px;
+  background: #eee;
+  color: #222;
+}
+
+.nav {
+  margin: -20px 0px 20px 0px;
+}
+
+dl dt {
+  font-weight: bold;
+}
+
+dl dd {
+  margin-left: 30px;
+  padding-bottom: 10px;
+}
+
+pre {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  line-height: 14px;
+  overflow: auto;
+  max-height: 400px;
+}
+
+code {
+  font-size: 12px;
+}
+
+.floatright {
+  float: right;
+}
+
+img.photo {
+  width: 80pt;
+  border-radius: 10pt;
+}
+
+img.portfoliologo {
+  width: 80pt;
+  padding: 25pt 0pt;
+}
+
+.inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.exerpt {
+  margin-top: -10px;
+  padding-top: 0px;
+  padding-left: 30px;
+}

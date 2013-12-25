@@ -1,0 +1,30 @@
+---
+layout: default
+title: Posts
+---
+
+<p class="nav">
+{% if paginator.next_page %}
+  <a href="{{ paginator.next_page_path }}">older</a>
+{% else %}
+  older
+{% endif %}
+&middot;
+{% if paginator.previous_page %}
+  <a href={% if paginator.previous_page == 1 %}"/"{% else %}"{{ paginator.previous_page_path }}"{% endif %}>newer</a>
+{% else %}
+  newer
+{% endif %}
+&middot;
+{% if paginator.previous_page %}
+  <a href="/">latest</a>
+{% else %}
+  latest
+{% endif %}
+</p>
+{% for post in paginator.posts %}
+  <p><b>{{ post.date | date_to_string }} &middot; <a href="{{ post.url }}">{{ post.title }}</a></b> [{% for tag in post.tags %}<a href="/tags/{{tag}}.html">{{tag}}</a>{% endfor %}]</p>
+  <div class="exerpt">
+    {{ post.excerpt }}
+  </div>
+{% endfor %}
