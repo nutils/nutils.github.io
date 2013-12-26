@@ -1,5 +1,16 @@
-name: NUtils project page
+name: The Nutils Project
+shortname: Nutils
+author: Nutils
+email: gertjanvanzwieten@gmail.com
+domain: nutils.org
+
 markdown: redcarpet
 pygments: true
 paginate: 5
 permalink: none
+
+tabs:
+  - title: Home
+    url: /
+  - title: About
+    url: /about.html
