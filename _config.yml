@@ -3,6 +3,7 @@ shortname: $shortname
 author: $author
 email: $email
 domain: $domain
+github: $github
 
 markdown: redcarpet
 pygments: true

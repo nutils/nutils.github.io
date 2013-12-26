@@ -128,6 +128,11 @@ code {
   font-size: 12px;
 }
 
+.icon {
+  height: 25px;
+  vertical-align: middle;
+}
+
 .floatright {
   float: right;
 }
