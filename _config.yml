@@ -3,6 +3,7 @@ shortname: Nutils
 author: Nutils
 email: gertjanvanzwieten@gmail.com
 domain: nutils.org
+google_id: UA-45178960-1
 
 markdown: redcarpet
 pygments: true
@@ -10,7 +11,9 @@ paginate: 5
 permalink: none
 
 tabs:
-  - title: Home
+  - title: News
     url: /
   - title: About
     url: /about.html
+
+scripts: google_analytics
