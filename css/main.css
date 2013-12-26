@@ -45,21 +45,33 @@ a {
 }
 
 #tabbar {
+  display: block;
   font-size: large;
-  margin-left: -9px;
+  padding: 0px;
+  margin: 0px -10px;
+}
+
+#tabbar span {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0px;
+  margin: 0px;
+}
+
+#tabbar span.select {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #eee;
+  color: #222;
 }
 
 #tabbar a {
   color: inherit;
   padding: 0px 9px;
   margin: 0px;
-  border-top-left-radius: 9px;
-  border-top-right-radius: 9px;
-}
-
-#tabbar a.select {
-  background-color: #eee;
-  color: #222;
 }
 
 #forkme_banner {
