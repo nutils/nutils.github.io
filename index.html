@@ -13,7 +13,7 @@ icon: { src: /images/feedicon.png, href: /atom.xml }
 {% endif %}
 &middot;
 <b>posts
-{{ paginator.page | minus: 1 | times: paginator.per_page | plus: 1 }}-{{ paginator.page | minus: 1 | times: paginator.per_page | plus: paginator.posts.size }} / {{ paginator.total_posts }}</b>
+{{ paginator.page | minus: 1 | times: paginator.per_page | plus: 1 }}-{{ paginator.page | minus: 1 | times: paginator.per_page | plus: paginator.posts.size }} of {{ paginator.total_posts }}</b>
 &middot;
 {% if paginator.next_page %}
   <a href="{{ paginator.next_page_path }}">older</a>
