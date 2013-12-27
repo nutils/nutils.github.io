@@ -13,7 +13,7 @@ layout: nil
     <email>{{ site.email }}</email>
     <uri>http://{{ site.domain }}/</uri>
   </author>
-  {% for post in site.posts %}
+  {% for post in site.posts limit:5 %}
   <entry>
     <id>http://{{ site.domain }}{{ post.id }}</id>
     <link type="text/html" rel="alternate" href="http://{{ site.domain }}{{ post.url }}"/>
