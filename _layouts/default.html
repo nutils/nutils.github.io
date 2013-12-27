@@ -17,7 +17,7 @@ layout: body
 <div id="main_content_wrap" class="outer">
   <section id="main_content" class="inner">
     {% if page.icon %}
-      <a href="{{ page.icon.href }}"><img src="{{ page.icon.src }}" height="20px" class="floatright"></img></a>
+      <a href="{{ page.icon.href }}"><img src="{{ page.icon.src }}" class="icon floatright"></img></a>
     {% endif %}
     <h2>{{ page.title }}</h2>
     {{ content }}
@@ -25,6 +25,6 @@ layout: body
 </div>
 <div id="footer_wrap" class="outer">
   <footer class="inner">
-    <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+    <p><a href="http://github.com/{{ site.github }}"><img src="/images/github.png" class="icon"></img></a> Published with <a href="http://pages.github.com">GitHub Pages</a></p>
   </footer>
 </div>
