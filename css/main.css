@@ -84,8 +84,12 @@ a {
   color: #222;
 }
 
-.nav {
-  margin: -20px 0px 20px 0px;
+h2 + .nav {
+  margin: -15px 0px 20px 0px;
+}
+
+div + .nav {
+  margin: 25px 0px 0px 0px;
 }
 
 dl dt {

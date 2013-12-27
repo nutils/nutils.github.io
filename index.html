@@ -4,28 +4,30 @@ title: Home
 icon: { src: /images/feedicon.png, href: /atom.xml }
 ---
 
+{% capture nav %}
 <p class="nav">
-{% if paginator.next_page %}
-  <a href="{{ paginator.next_page_path }}">older</a>
-{% else %}
-  older
-{% endif %}
-&middot;
 {% if paginator.previous_page %}
   <a href={% if paginator.previous_page == 1 %}"/"{% else %}"{{ paginator.previous_page_path }}"{% endif %}>newer</a>
 {% else %}
   newer
 {% endif %}
-&middot;
-{% if paginator.previous_page %}
-  <a href="/">latest</a>
+←
+<b>posts
+{{ paginator.page | minus: 1 | times: paginator.per_page | plus: 1 }}-{{ paginator.page | minus: 1 | times: paginator.per_page | plus: paginator.posts.size }} / {{ paginator.total_posts }}</b>
+→
+{% if paginator.next_page %}
+  <a href="{{ paginator.next_page_path }}">older</a>
 {% else %}
-  latest
+  older
 {% endif %}
 </p>
+{% endcapture %}
+
+{{ nav }}
 {% for post in paginator.posts %}
   <p><b>{{ post.date | date_to_string }} &middot; <a href="{{ post.url }}">{{ post.title }}</a></b>{% if post.tags.size > 0 %} [{% for tag in post.tags %}<a href="/tags/{{tag}}.html">{{tag}}</a>{% endfor %}]{% endif %}</p>
   <div class="exerpt">
     {{ post.excerpt }}
   </div>
 {% endfor %}
+{{ nav }}

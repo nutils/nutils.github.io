@@ -2,16 +2,22 @@
 layout: default
 ---
 
+{% capture nav %}
 <p class="nav">
-{% if page.previous %}<a href="{{ page.previous.url }}">older</a>{% else %}older{% endif %}
-&middot;
-{{ page.date | date_to_string }}
-&middot;
-{% if page.next %}<a href="{{ page.next.url }}">newer</a>{% else %}newer{% endif %}
-&middot;
 {% if page.url != site.posts.first.url %}<a href="{{ site.posts.first.url }}">latest</a>{% else %}latest{% endif %}
+←
+{% if page.next %}<a href="{{ page.next.url }}">newer</a>{% else %}newer{% endif %}
+←
+<b>{{ page.date | date_to_string }}</b>
+→
+{% if page.previous %}<a href="{{ page.previous.url }}">older</a>{% else %}older{% endif %}
+→
+{% if page.url != site.posts.last.url %}<a href="{{ site.posts.last.url }}">first</a>{% else %}first{% endif %}
 </p>
+{% endcapture %}
 
+{{ nav }}
 <div class="post">
 {{ content }}
 </div>
+{{ nav }}
