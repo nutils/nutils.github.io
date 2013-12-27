@@ -9,7 +9,6 @@ github: nutils
 markdown: redcarpet
 pygments: true
 paginate: 5
-permalink: none
 
 tabs:
   - title: News
