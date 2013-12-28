@@ -29,6 +29,9 @@ window.onload = function() {
     newa.onclick = gen_onclick( more[i].style );
     newp.appendChild( newa );
     more[i].parentNode.insertBefore( newp, more[i].nextSibling );
+    if ( newa.href == document.location.href ) {
+      newa.onclick();
+    }
     previous = more[i];
   }
   console.log( "everything loaded" );
