@@ -6,7 +6,7 @@ gen_onclick = function( style ) {
     }
     else {
       style.display = "none";
-      this.innerHTML = "More";
+      this.innerHTML = "More‥";
     }
   };
 };
@@ -25,7 +25,7 @@ window.onload = function() {
         break;
       }
     }
-    newa.innerHTML = "More";
+    newa.innerHTML = "More‥";
     newa.onclick = gen_onclick( more[i].style );
     newp.appendChild( newa );
     more[i].parentNode.insertBefore( newp, more[i].nextSibling );
