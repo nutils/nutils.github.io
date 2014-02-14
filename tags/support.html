@@ -1,0 +1,12 @@
+---
+layout: default
+title: "News items"
+---
+
+<p>These are all the posts that were labeled as "support".</p>
+
+<dl>
+{% for post in site.tags.support %}
+  <dt>{{ post.date | date_to_string }} &middot; <a href="{{ post.url }}">{{ post.title }}</a><dt>
+{% endfor %}
+</dl>
