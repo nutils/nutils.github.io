@@ -119,6 +119,11 @@ code {
   float: right;
 }
 
+img.logo {
+  vertical-align: middle;
+  margin-left: -80px;
+}
+
 img.icon {
   height: 25px;
   vertical-align: middle;

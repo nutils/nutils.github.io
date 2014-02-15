@@ -4,7 +4,7 @@ layout: body
 
 <div id="header_wrap" class="outer">
   <header class="inner">
-    <h1>{{ site.name }}</h1>
+    <h1><img src="/images/nutilslogo.png" class="logo"> {{ site.name }}</h1>
     <div id="tabbar">
     {% capture alltabs %}{% for tab in site.tabs %}  {{ tab.title }}  {% endfor %}{% endcapture %}
     {% assign scale = alltabs | size | divided_by: 100. %}
