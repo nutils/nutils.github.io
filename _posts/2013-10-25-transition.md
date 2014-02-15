@@ -2,6 +2,7 @@
 layout: post
 title: Finity upcoming release and transition
 tags: finity
+author: Gertjan van Zwieten
 ---
 
 _As appeared on the Finity mailing list_ &mdash; Dear all. In the latest commit

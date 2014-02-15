@@ -2,6 +2,7 @@
 layout: post
 title: Finity end of life, time to switch
 tags: finity
+author: Gertjan van Zwieten
 ---
 
 _As appeared on the Finity mailing list_ &mdash; Dear all. Now that we learned

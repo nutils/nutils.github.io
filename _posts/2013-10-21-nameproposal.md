@@ -2,6 +2,7 @@
 layout: post
 title: Finity new name proposal
 tags: finity
+author: Gertjan van Zwieten
 ---
 
 _As appeared on the Finity mailing list_ &mdash; Dear Finity users. As you are

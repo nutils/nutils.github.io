@@ -2,6 +2,7 @@
 layout: post
 title: Website live
 tags: news
+author: Gertjan van Zwieten
 ---
 
 Welcome at the new home of The Nutils Project, the open source finite element
