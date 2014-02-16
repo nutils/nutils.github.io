@@ -28,12 +28,20 @@ header, nav, section, footer {
 }
 
 header {
-  max-width: 764px; /* 82 px offset for logo */
+  max-width: 732px; /* 66 px offset for logo */
 }
 
 header h1 {
+  padding-left: 66px;
+  text-indent: -76px;
   font-size: 40px;
-  margin-bottom: 25px;
+  line-height: 10px;
+  margin-bottom: 20px;
+}
+
+header h1 img {
+  vertical-align: middle;
+  padding: 0 10px;
 }
 
 nav {
@@ -105,12 +113,6 @@ code {
 
 .floatright {
   float: right;
-}
-
-img.logo {
-  vertical-align: middle;
-  padding-right: 10px;
-  float: left;
 }
 
 img.icon {
