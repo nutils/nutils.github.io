@@ -2,29 +2,30 @@
 layout: body
 ---
 
-<div id="header_wrap" class="outer">
-  <header class="inner">
-    <h1><img src="/images/nutilslogo.png" class="logo"> {{ site.name }}</h1>
-    <div id="tabbar">
-    {% capture alltabs %}{% for tab in site.tabs %}  {{ tab.title }}  {% endfor %}{% endcapture %}
-    {% assign scale = alltabs | size | divided_by: 100. %}
-    {% for tab in site.tabs %}<span style="max-width:{{ tab.title | size | plus: 4 | divided_by: scale }}%;" {% if page.title == tab.title %}class="select"{% endif %}>
-      <a href="{{ tab.url }}">{{ tab.title | downcase }}</a>
-    </span>{% endfor %}
-    </div>
-  </header>
+<header>
+  <h1><img src="/images/nutilslogo.png" class="logo"> {{ site.name }}</h1>
+</header>
+
+<nav>
+  {% capture alltabs %}{% for tab in site.tabs %}  {{ tab.title }}  {% endfor %}{% endcapture %}
+  {% assign scale = alltabs | size | divided_by: 100. %}
+  {% for tab in site.tabs %}<span style="max-width:{{ tab.title | size | plus: 4 | divided_by: scale }}%;" {% if page.title == tab.title %}class="select"{% endif %}>
+    <a href="{{ tab.url }}">{{ tab.title | downcase }}</a>
+  </span>{% endfor %}
+</nav>
+
+<div class="lightbg">
+
+<section>
+  {% if page.icon %}
+    <a href="{{ page.icon.href }}"><img src="{{ page.icon.src }}" class="icon floatright"></img></a>
+  {% endif %}
+  <h2>{{ page.title }}</h2>
+  {{ content }}
+</section>
+
 </div>
-<div id="main_content_wrap" class="outer">
-  <section id="main_content" class="inner">
-    {% if page.icon %}
-      <a href="{{ page.icon.href }}"><img src="{{ page.icon.src }}" class="icon floatright"></img></a>
-    {% endif %}
-    <h2>{{ page.title }}</h2>
-    {{ content }}
-  </section>
-</div>
-<div id="footer_wrap" class="outer">
-  <footer class="inner">
-    <p><a href="http://github.com/{{ site.github }}"><img src="/images/github.png" class="icon"></img></a> Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-  </footer>
-</div>
+
+<footer>
+  <p><a href="http://github.com/{{ site.github }}"><img src="/images/github.png" class="icon"></img></a> Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+</footer>
