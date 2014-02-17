@@ -28,15 +28,16 @@ header, nav, section, footer {
 }
 
 header {
-  max-width: 732px; /* 66 px offset for logo */
+  max-width: 748px; /* 74 px offset for logo */
 }
 
 header h1 {
-  padding-left: 66px;
-  text-indent: -76px;
-  font-size: 40px;
+  padding-left: 74px;
+  text-indent: -84px;
   line-height: 10px;
   margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: normal;
 }
 
 header h1 img {
