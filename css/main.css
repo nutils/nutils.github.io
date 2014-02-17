@@ -145,3 +145,7 @@ img.portfoliologo {
 .widelist li {
   padding-top: 10px;
 }
+
+.centered {
+  text-align: center;
+}
