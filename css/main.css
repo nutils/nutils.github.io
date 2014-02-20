@@ -3,6 +3,10 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  clear: both;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -148,4 +152,8 @@ img.portfoliologo {
 
 .centered {
   text-align: center;
+}
+
+.intro {
+  font-weight: bold;
 }
