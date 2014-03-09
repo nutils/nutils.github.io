@@ -1,0 +1,117 @@
+---
+layout: post
+title: Orthotropic material
+tags: maths
+author: <a href="http://hvzengineering.nl">HvZ Engineering</a>
+scripts: mathjax
+---
+
+<p>Linear elastic materials owe their name to the linear stress strain relation
+σ = C : ε, where C is a 4th order tensor. In 3D it has 21 independent
+parameters. For isotropic materials, in which material properties are equal in
+every direction, this number reduces to two; e.g. Young's modulus and Poisson's
+ratio, the Lamé parameters, or <a
+href="http://en.wikipedia.org/wiki/Elastic_modulus">any other two</a>. A
+slightly more general special case is that of <a
+href="https://en.wikipedia.org/wiki/Orthotropic_material">orthotropic
+materials</a>, with three orthogonal axes of rotational symmetry, for which the
+number of independent parameters totals 9. Below we present the corresponding
+elasticity tensor in the preferred fourth-order form.</p>
+
+<h4>Starting point: Voigt notation</h4>
+
+<p>A convenient parameterization with clear physical relevance is the set of
+Young moduli E₁ E₂ E₃, shear moduli G₁₂ G₂₃ G₃₁, and Poisson's ratios ν₁₂ ν₂₃
+ν₃₁ and ν₂₁ ν₃₂ ν₁₃. This adds up to 12, leading to three interdependence
+relations ∑ⱼ Eⱼ νᵢⱼ = ∑ᵢ Eᵢ νⱼᵢ. In terms of these 12 dependent parameters, the
+elasticity tensor can be written in <a
+href="http://en.wikipedia.org/wiki/Voigt_notation">Voigt notation</a> as the
+following 6x6 symmetric matrix
+``C := \begin{bmatrix} N E & 0 \\ 0 & G \end{bmatrix}, \label{voigt}`` where
+``N := \frac {\begin{bmatrix} ν_{32}ν_{23} - 1 & -ν_{12} - ν_{13} ν_{32} & -ν_{13} - ν_{12} ν_{23} \\ -ν_{21} - ν_{23} ν_{31} & ν_{31}ν_{13} - 1 & -ν_{23} - ν_{21} ν_{13} \\ -ν_{31} - ν_{32} ν_{21} & -ν_{32} - ν_{31} ν_{12} & ν_{12}ν_{21} - 1 \end{bmatrix}} { ν_{23}ν_{32} + ν_{31}ν_{13} + ν_{12}ν_{21} + 2 ν_{12} ν_{23} ν_{31} - 1 },``
+``E := \begin{bmatrix} E_1 & 0 & 0 \\ 0 & E_2 & 0 \\ 0 & 0 & E_3 \end{bmatrix},``
+``G := \begin{bmatrix} G_{23} & 0 & 0 \\ 0 & G_{31} & 0 \\ 0 & 0 & G_{12} \end{bmatrix}.``
+For derivations see for example <a
+href="https://en.wikipedia.org/wiki/Orthotropic_material#Stiffness_and_compliance_matrices_in_orthotropic_elasticity">wikipedia</a>.</p>
+
+<p>Note that N E = E Nᵀ, owing to the relation between ν₂₃ ν₃₁ ν₁₂ and their
+counterpart ν₃₂ ν₁₃ ν₂₁. An alternative, independent parameterisation is
+obtained by introducing the vector of symmetrized ratios to replace the
+original set of 6 dependent ratios.
+``v := \begin{bmatrix} \sqrt{ν_{23}ν_{32}} & \sqrt{ν_{31}ν_{13}} & \sqrt{ν_{12}ν_{21}} \end{bmatrix}.``
+With that we can rewrite NE in terms of 6 independent parameters E₁ E₂ E₃, ν₁ ν₂ ν₃.
+``NE = \frac { \small \begin{bmatrix} E_1 (ν_1^2-1) & -\sqrt{E_1 E_2} ( ν_3 + ν_1 ν_2 ) &  -\sqrt{E_1 E_3} ( ν_2 + ν_1 ν_3 ) \\
+-\sqrt{E_2 E_1} ( ν_3 + ν_2 ν_1 ) & E_2 (ν_2^2-1) & -\sqrt{E_2 E_3} ( ν_1 + ν_2 ν_3 ) \\
+-\sqrt{E_3 E_1} ( ν_2 + ν_3 ν_1 ) & -\sqrt{E_3 E_2} ( ν_1 + ν_3 ν_2 ) & E_3 (ν_3^2-1)
+\end{bmatrix}} { ν_1^2 + ν_2^2 + ν_3^2 + 2 ν_1 ν_2 ν_3 - 1 }``
+</p>
+
+<h4>Converting to index notation</h4>
+
+<p>Though Voigt notation makes efficient use of the symmetries of the stress
+and strain tensors, a downside is that is breaks the tensor structure of the
+underlying problem. To reconstruct the proper, 4-dimensional form (and leave
+optimization of symmetry to the implementation, rather than formulation) we
+proceed by writing C as Cᵢⱼₖₗ, subject to symmetry relations Cᵢⱼₖₗ = Cᵢⱼₗₖ =
+Cⱼᵢₖₗ = Cₖₗᵢⱼ.</p>
+
+<p>To facilitate representation, we introduce a generalized form of the
+Kronecker tensor.
+``δ_{i_1,i_2,‥,i_n} := \begin{cases} 1 & i_1 = i_2 = \cdots = i_n \\ 0 & \text{otherwise}. \end{cases}``
+For n=2 we retrieve the original Kronecker. For n=1, δₖ represents the vector [
+1, 1, 1 ]. For larger n this vector occupies the diagonal of the high
+dimensional object. In contractions, summed indices disappear and the remaining
+indices merge; e.g. ∑ₖ δᵢⱼₖ δₖₘ = δᵢⱼₘ and ∑ⱼ δᵢⱼ δⱼ = δᵢ. Next to the familiar
+identity ∑ᵢ uᵢ δᵢⱼ = uⱼ, we also find ∑ₖ uₖ δₖ = ∑ₖ uₖ and ∑ₖ δᵢⱼₖ = δᵢⱼ, and
+generalizations of those. We note that δᵢⱼₖ Aᵢⱼ represents the 1D diagonal of
+the matrix A with index k, and ∑ₖ δᵢⱼₖ uₖ the 2D diagonal matrix of u with
+indices i and j. We point out that we do <em>not</em> make use of Einstein's
+summation convention. All summations are made explicit with the ∑ symbol. In
+absence, operations are to be interpreted pointwise.</p>
+
+<p>With notation in place, we can now represent the elasticity tensor in 4D form as
+``C_{ijkl} = \sum_{mn} (NE)_{mn} δ_{ijm} δ_{kln} + \sum_{mn} H_{mn} ( δ_{ikm} δ_{jln} + δ_{ilm} δ_{jkn} ), \label{ortho}``
+where
+``H := \begin{bmatrix} 0 & G_{12} & G_{31} \\ G_{12} & 0 & G_{23} \\ G_{31} & G_{23} & 0 \end{bmatrix}.``
+</p>
+
+</p>Equation \eqref{ortho} presents our sought after 4D elasticity tensor.
+Symmetry relations trivially hold and correspondence to \eqref{voigt} is easily
+verified. However for a more practically useful formulation we like to further
+exploit the internal structure of the NE and G matrices. To this end we require
+a slightly altered representation of shear parameters.
+``g := \begin{bmatrix} G_{23} & G_{31} & G_{12} \end{bmatrix}.``
+Denoting g̅ := g₁ g₂ g₃ and ν̅ := ν₁ν₂ν₃, we can express NE and H as
+``(NE)_{ij} = \frac { -\sqrt{E_i E_j} ( \bar{ν} / ν_i ν_j + ν_i ν_j ) + \sum_k δ_{ijk} E_k ( \bar{ν}/ν_k + 2ν_k -1 ) } { \sum_k ν_k^2 + 2 \bar{ν} - 1 },``
+``H_{ij} = \bar{g} / g_i g_j - \sum_k δ_{ijk} \bar{g} / g_k^2.``
+Substitution in \eqref{ortho} yields the final expression that captures
+the structure of C in terms of 9 independent parameters E₁ E₂ E₃, ν₁ ν₂ ν₃ and
+g₁ g₂ g₃.
+``C_{ijkl} = \sum_{mn} Μ_{mn} δ_{ijm} δ_{kln} + \sum_p Λ_p δ_{ijklp} + \sum_{mn} Γ_{mn} ( δ_{ikm} δ_{jln} + δ_{ilm} δ_{jkn} ), \label{ortho2}``
+with supporting tensors
+</p>
+<ul>
+<li>`Μ_{mn} = -\sqrt{Eₘ Eₙ} \frac { \bar{ν} / ν_m ν_n  + ν_m ν_n } { \sum_k ν_k^2 + 2 \bar{ν} - 1 }`</li>
+<li>`Λ_p = E_p \frac { \bar{ν} / ν_p + 2ν_p - 1 } { \sum_k ν_k^2 + 2 \bar{ν} - 1 } - 2 \frac { \bar{g} } { g_p^2 }`</li>
+<li>`Γ_{mn} = \frac { \bar{g} } { g_m g_n }`</li>
+</ul>
+
+<h4>Special case: isotropy</h4>
+
+<p>Be reminded that any isotropic material is by definition also orthotropic.
+To verify formulation \eqref{ortho2} we substitute Young's modulus Eᵢ = Eδᵢ,
+Poisson's ratio νᵢ = νδᵢ, and shear modulus gᵢ = gδᵢ, subject to the
+compatibility relation E = 2 G (ν+1). It follows that Μₘₙ = δₘδₙ Eν /
+(ν+1)(1-2ν), Λₚ = 0 δₚ, Γₘₙ = G δₘδₙ. Hence
+``C_{ijkl} = \frac {ν E} {(ν+1)(1-2ν)} δ_{ij} δ_{kl} + G ( δ_{ik} δ_{jl} + δ_{il} δ_{jk} ),``
+corresponding to <a href="http://en.wikipedia.org/wiki/Hooke%27s_law#Isotropic_materials">isotropic theory</a>.
+</p>
+
+<h4>Stress tensor</h4>
+
+<p>In practical application the elasticity tensor typically shows up in
+contraction with the strain tensor, typically taken to be the symmetric
+gradient of the displacement field u. Employing various Kronecker contraction
+identities this results in the following concise expression.
+``σ_{ij} = C_{ijkl} u_{k,l} = \sum_m \left( \sum_n Μ_{mn} u_{n,n} + Λ_m u_{m,m} \right) δ_{ijm} + Γ_{ij} ( u_{i,j} + u_{j,i} ).``
+</p>
