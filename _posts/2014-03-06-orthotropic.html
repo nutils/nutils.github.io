@@ -22,15 +22,15 @@ elasticity tensor in the preferred fourth-order form.</p>
 
 <p>A convenient parameterization with clear physical relevance is the set of
 Young moduli E₁ E₂ E₃, shear moduli G₁₂ G₂₃ G₃₁, and Poisson's ratios ν₁₂ ν₂₃
-ν₃₁ and ν₂₁ ν₃₂ ν₁₃. This adds up to 12, leading to three interdependence
-relations ∑ⱼ Eⱼ νᵢⱼ = ∑ᵢ Eᵢ νⱼᵢ. In terms of these 12 dependent parameters, the
-elasticity tensor can be written in <a
+ν₃₁ and ν₂₁ ν₃₂ ν₁₃, with three interdependence relations ∑ⱼ Eⱼ νᵢⱼ = ∑ᵢ Eᵢ
+νⱼᵢ. In terms of these 12 dependent parameters, the elasticity tensor can be
+written in <a
 href="http://en.wikipedia.org/wiki/Voigt_notation">Voigt notation</a> as the
 following 6x6 symmetric matrix
 ``C := \begin{bmatrix} N E & 0 \\ 0 & G \end{bmatrix}, \label{voigt}`` where
-``N := \frac {\begin{bmatrix} ν_{32}ν_{23} - 1 & -ν_{12} - ν_{13} ν_{32} & -ν_{13} - ν_{12} ν_{23} \\ -ν_{21} - ν_{23} ν_{31} & ν_{31}ν_{13} - 1 & -ν_{23} - ν_{21} ν_{13} \\ -ν_{31} - ν_{32} ν_{21} & -ν_{32} - ν_{31} ν_{12} & ν_{12}ν_{21} - 1 \end{bmatrix}} { ν_{23}ν_{32} + ν_{31}ν_{13} + ν_{12}ν_{21} + 2 ν_{12} ν_{23} ν_{31} - 1 },``
-``E := \begin{bmatrix} E_1 & 0 & 0 \\ 0 & E_2 & 0 \\ 0 & 0 & E_3 \end{bmatrix},``
-``G := \begin{bmatrix} G_{23} & 0 & 0 \\ 0 & G_{31} & 0 \\ 0 & 0 & G_{12} \end{bmatrix}.``
+``N := \frac {\begin{bmatrix} ν_{32}ν_{23} - 1 & -ν_{12} - ν_{13} ν_{32} & -ν_{13} - ν_{12} ν_{23} \\ -ν_{21} - ν_{23} ν_{31} & ν_{31}ν_{13} - 1 & -ν_{23} - ν_{21} ν_{13} \\ -ν_{31} - ν_{32} ν_{21} & -ν_{32} - ν_{31} ν_{12} & ν_{12}ν_{21} - 1 \end{bmatrix}} { ν_{23}ν_{32} + ν_{31}ν_{13} + ν_{12}ν_{21} + 2 ν_{12} ν_{23} ν_{31} - 1 }, \notag``
+``E := \begin{bmatrix} E_1 & 0 & 0 \\ 0 & E_2 & 0 \\ 0 & 0 & E_3 \end{bmatrix}, \quad
+G := \begin{bmatrix} G_{23} & 0 & 0 \\ 0 & G_{31} & 0 \\ 0 & 0 & G_{12} \end{bmatrix}. \notag``
 For derivations see for example <a
 href="https://en.wikipedia.org/wiki/Orthotropic_material#Stiffness_and_compliance_matrices_in_orthotropic_elasticity">wikipedia</a>.</p>
 
@@ -40,10 +40,11 @@ obtained by introducing the vector of symmetrized ratios to replace the
 original set of 6 dependent ratios.
 ``v := \begin{bmatrix} \sqrt{ν_{23}ν_{32}} & \sqrt{ν_{31}ν_{13}} & \sqrt{ν_{12}ν_{21}} \end{bmatrix}.``
 With that we can rewrite NE in terms of 6 independent parameters E₁ E₂ E₃, ν₁ ν₂ ν₃.
-``NE = \frac { \small \begin{bmatrix} E_1 (ν_1^2-1) & -\sqrt{E_1 E_2} ( ν_3 + ν_1 ν_2 ) &  -\sqrt{E_1 E_3} ( ν_2 + ν_1 ν_3 ) \\
--\sqrt{E_2 E_1} ( ν_3 + ν_2 ν_1 ) & E_2 (ν_2^2-1) & -\sqrt{E_2 E_3} ( ν_1 + ν_2 ν_3 ) \\
--\sqrt{E_3 E_1} ( ν_2 + ν_3 ν_1 ) & -\sqrt{E_3 E_2} ( ν_1 + ν_3 ν_2 ) & E_3 (ν_3^2-1)
-\end{bmatrix}} { ν_1^2 + ν_2^2 + ν_3^2 + 2 ν_1 ν_2 ν_3 - 1 }``
+``NE = \sqrt{E} P \sqrt{E},``
+``P = \frac { \begin{bmatrix} ν_1^2-1 & -ν_3 - ν_1 ν_2 &  -ν_2 - ν_1 ν_3 \\
+-ν_3 - ν_2 ν_1 & ν_2^2-1 & -ν_1 - ν_2 ν_3 \\
+-ν_2 - ν_3 ν_1 & -ν_1 - ν_3 ν_2 & ν_3^2-1
+\end{bmatrix} } { ν_1^2 + ν_2^2 + ν_3^2 + 2 ν_1 ν_2 ν_3 - 1 }.``
 </p>
 
 <h4>Converting to index notation</h4>
@@ -70,20 +71,20 @@ summation convention. All summations are made explicit with the ∑ symbol. In
 absence, operations are to be interpreted pointwise.</p>
 
 <p>With notation in place, we can now represent the elasticity tensor in 4D form as
-``C_{ijkl} = \sum_{mn} (NE)_{mn} δ_{ijm} δ_{kln} + \sum_{mn} H_{mn} ( δ_{ikm} δ_{jln} + δ_{ilm} δ_{jkn} ), \label{ortho}``
+``C_{ijkl} = \sum_{mn} \sqrt{ E_m E_n } P_{mn} δ_{ijm} δ_{kln} + \sum_{mn} S_{mn} ( δ_{ikm} δ_{jln} + δ_{ilm} δ_{jkn} ), \label{ortho}``
 where
-``H := \begin{bmatrix} 0 & G_{12} & G_{31} \\ G_{12} & 0 & G_{23} \\ G_{31} & G_{23} & 0 \end{bmatrix}.``
+``S := \begin{bmatrix} 0 & G_{12} & G_{31} \\ G_{12} & 0 & G_{23} \\ G_{31} & G_{23} & 0 \end{bmatrix}.``
 </p>
 
 </p>Equation \eqref{ortho} presents our sought after 4D elasticity tensor.
 Symmetry relations trivially hold and correspondence to \eqref{voigt} is easily
 verified. However for a more practically useful formulation we like to further
-exploit the internal structure of the NE and G matrices. To this end we require
+exploit the internal structure of the P and S matrices. To this end we require
 a slightly altered representation of shear parameters.
 ``g := \begin{bmatrix} G_{23} & G_{31} & G_{12} \end{bmatrix}.``
-Denoting g̅ := g₁ g₂ g₃ and ν̅ := ν₁ν₂ν₃, we can express NE and H as
-``(NE)_{ij} = \frac { -\sqrt{E_i E_j} ( \bar{ν} / ν_i ν_j + ν_i ν_j ) + \sum_k δ_{ijk} E_k ( \bar{ν}/ν_k + 2ν_k -1 ) } { \sum_k ν_k^2 + 2 \bar{ν} - 1 },``
-``H_{ij} = \bar{g} / g_i g_j - \sum_k δ_{ijk} \bar{g} / g_k^2.``
+Denoting g̅ := g₁ g₂ g₃ and ν̅ := ν₁ν₂ν₃, we can express P and S as
+``P_{ij} = \frac { -\bar{ν} / ν_i ν_j - ν_i ν_j + \sum_k δ_{ijk} ( \bar{ν}/ν_k^2 + 2ν_k^2 -1 ) } { \sum_k ν_k^2 + 2 \bar{ν} - 1 },``
+``S_{ij} = \bar{g} / g_i g_j - \sum_k δ_{ijk} \bar{g} / g_k^2.``
 Substitution in \eqref{ortho} yields the final expression that captures
 the structure of C in terms of 9 independent parameters E₁ E₂ E₃, ν₁ ν₂ ν₃ and
 g₁ g₂ g₃.
@@ -92,7 +93,7 @@ with supporting tensors
 </p>
 <ul>
 <li>`Μ_{mn} = -\sqrt{Eₘ Eₙ} \frac { \bar{ν} / ν_m ν_n  + ν_m ν_n } { \sum_k ν_k^2 + 2 \bar{ν} - 1 }`</li>
-<li>`Λ_p = E_p \frac { \bar{ν} / ν_p + 2ν_p - 1 } { \sum_k ν_k^2 + 2 \bar{ν} - 1 } - 2 \frac { \bar{g} } { g_p^2 }`</li>
+<li>`Λ_p = E_p \frac { \bar{ν} / ν_p^2 + 2ν_p^2 - 1 } { \sum_k ν_k^2 + 2 \bar{ν} - 1 } - 2 \frac { \bar{g} } { g_p^2 }`</li>
 <li>`Γ_{mn} = \frac { \bar{g} } { g_m g_n }`</li>
 </ul>
 
