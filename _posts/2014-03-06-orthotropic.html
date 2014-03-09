@@ -83,7 +83,7 @@ exploit the internal structure of the P and S matrices. To this end we require
 a slightly altered representation of shear parameters.
 ``g := \begin{bmatrix} G_{23} & G_{31} & G_{12} \end{bmatrix}.``
 Denoting g̅ := g₁ g₂ g₃ and ν̅ := ν₁ν₂ν₃, we can express P and S as
-``P_{ij} = \frac { -\bar{ν} / ν_i ν_j - ν_i ν_j + \sum_k δ_{ijk} ( \bar{ν}/ν_k^2 + 2ν_k^2 -1 ) } { \sum_k ν_k^2 + 2 \bar{ν} - 1 },``
+``P_{ij} = \frac { -\bar{ν} / ν_i ν_j - ν_i ν_j + \sum_k δ_{ijk} ( \bar{ν}/ν_k^2 + 2ν_k^2 - δ_k ) } { \sum_k ν_k^2 + 2 \bar{ν} - 1 },``
 ``S_{ij} = \bar{g} / g_i g_j - \sum_k δ_{ijk} \bar{g} / g_k^2.``
 Substitution in \eqref{ortho} yields the final expression that captures
 the structure of C in terms of 9 independent parameters E₁ E₂ E₃, ν₁ ν₂ ν₃ and
@@ -93,7 +93,7 @@ with supporting tensors
 </p>
 <ul>
 <li>`Μ_{mn} = -\sqrt{Eₘ Eₙ} \frac { \bar{ν} / ν_m ν_n  + ν_m ν_n } { \sum_k ν_k^2 + 2 \bar{ν} - 1 }`</li>
-<li>`Λ_p = E_p \frac { \bar{ν} / ν_p^2 + 2ν_p^2 - 1 } { \sum_k ν_k^2 + 2 \bar{ν} - 1 } - 2 \frac { \bar{g} } { g_p^2 }`</li>
+<li>`Λ_p = E_p \frac { \bar{ν} / ν_p^2 + 2ν_p^2 - δ_p } { \sum_k ν_k^2 + 2 \bar{ν} - 1 } - 2 \frac { \bar{g} } { g_p^2 }`</li>
 <li>`Γ_{mn} = \frac { \bar{g} } { g_m g_n }`</li>
 </ul>
 
