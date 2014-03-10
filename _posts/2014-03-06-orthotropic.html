@@ -21,10 +21,10 @@ elasticity tensor in the preferred fourth-order form.</p>
 <h4>Starting point: Voigt notation</h4>
 
 <p>A convenient parameterization with clear physical relevance is the set of
-Young moduli E₁ E₂ E₃, shear moduli G₁₂ G₂₃ G₃₁, and Poisson's ratios ν₁₂ ν₂₃
-ν₃₁ and ν₂₁ ν₃₂ ν₁₃, with three interdependence relations ∑ⱼ Eⱼ νᵢⱼ = ∑ᵢ Eᵢ
-νⱼᵢ. In terms of these 12 dependent parameters, the elasticity tensor can be
-written in <a
+Young moduli `E_1, E_2, E_3`, shear moduli `G_{23}, G_{31}, G_{12}`, and Poisson's
+ratios `ν_{23}, ν_{31}, ν_{12}` and `ν_{32}, ν_{13}, ν_{21}`, with three
+interdependence relations `\sum_j E_j ν_{ij} = \sum_i E_i ν_{ji}`. In terms of
+these 12 dependent parameters, the elasticity tensor can be written in <a
 href="http://en.wikipedia.org/wiki/Voigt_notation">Voigt notation</a> as the
 following 6x6 symmetric matrix
 ``C := \begin{bmatrix} N E & 0 \\ 0 & G \end{bmatrix}, \label{voigt}`` where
@@ -34,12 +34,12 @@ G := \begin{bmatrix} G_{23} & 0 & 0 \\ 0 & G_{31} & 0 \\ 0 & 0 & G_{12} \end{bma
 For derivations see for example <a
 href="https://en.wikipedia.org/wiki/Orthotropic_material#Stiffness_and_compliance_matrices_in_orthotropic_elasticity">wikipedia</a>.</p>
 
-<p>Note that N E = E Nᵀ, owing to the relation between ν₂₃ ν₃₁ ν₁₂ and their
-counterpart ν₃₂ ν₁₃ ν₂₁. An alternative parameterisation is obtained by
-introducing the vector of symmetrized ratios to replace the original set of 6
-dependent ratios.
+<p>Note that `N E = E N^T`, owing to the relation between `ν_{23}, ν_{31},
+ν_{12}` and their counterprt `ν_{32}, ν_{13}, ν_{21}`. An alternative
+parameterisation is obtained by introducing the vector of symmetrized ratios to
+replace the original set of 6 dependent ratios.
 ``v := \begin{bmatrix} \sqrt{ν_{23}ν_{32}} & \sqrt{ν_{31}ν_{13}} & \sqrt{ν_{12}ν_{21}} \end{bmatrix}.``
-With that we can rewrite NE in terms of 6 independent parameters E₁ E₂ E₃, ν₁ ν₂ ν₃.
+With that we can rewrite `NE` in terms of 6 independent parameters `E_1, E_2, E_3, ν_1, ν_2, ν_3`.
 ``NE = \sqrt{E} P \sqrt{E},``
 ``P = \frac { \begin{bmatrix} ν_1^2-1 & -ν_3 - ν_1 ν_2 &  -ν_2 - ν_1 ν_3 \\
 -ν_3 - ν_2 ν_1 & ν_2^2-1 & -ν_1 - ν_2 ν_3 \\
@@ -53,22 +53,24 @@ With that we can rewrite NE in terms of 6 independent parameters E₁ E₂ E₃,
 and strain tensors, a downside is that is breaks the tensor structure of the
 underlying problem. To reconstruct the proper, 4-dimensional form (and leave
 optimization of symmetry to the implementation, rather than formulation) we
-proceed by writing C as Cᵢⱼₖₗ, subject to symmetry relations Cᵢⱼₖₗ = Cᵢⱼₗₖ =
-Cⱼᵢₖₗ = Cₖₗᵢⱼ.</p>
+proceed by writing `C` as `C_{ijkl}`, subject to symmetry relations `C_{ijkl} =
+C_{ijlk} = C_{jikl} = C_{klij}`.</p>
 
 <p>To facilitate representation, we introduce a generalized form of the
 Kronecker tensor.
 ``δ_{i_1,i_2,‥,i_n} := \begin{cases} 1 & i_1 = i_2 = \cdots = i_n \\ 0 & \text{otherwise}. \end{cases}``
-For n=2 we retrieve the original Kronecker. For n=1, δₖ represents the vector [
-1, 1, 1 ]. For larger n this vector occupies the diagonal of the high
+For `n=2` we retrieve the original Kronecker. For `n=1`, `δ_k` represents the
+vector [ 1, 1, 1 ]. For larger `n` this vector occupies the diagonal of the high
 dimensional object. In contractions, summed indices disappear and the remaining
-indices merge; e.g. ∑ₖ δᵢⱼₖ δₖₘ = δᵢⱼₘ and ∑ⱼ δᵢⱼ δⱼ = δᵢ. Next to the familiar
-identity ∑ᵢ uᵢ δᵢⱼ = uⱼ, we also find ∑ₖ uₖ δₖ = ∑ₖ uₖ and ∑ₖ δᵢⱼₖ = δᵢⱼ, and
-generalizations of those. Furthermore, δᵢⱼₖ Aᵢⱼ represents the 1D diagonal of
-the matrix A with index k, and ∑ₖ δᵢⱼₖ uₖ the 2D diagonal matrix of u with
-indices i and j. We point out that we do <em>not</em> make use of Einstein's
-summation convention. All summations are made explicit with the ∑ symbol. In
-absence, operations are to be interpreted pointwise.</p>
+indices merge; e.g. `\sum_k δ_{ijk} δ_{km} = δ_{ijm}` and `\sum_j δ_{ij} δ_j =
+δ_i`. Beyond the familiar identity `\sum_i u_i δ_{ij} = u_j`, we also find
+`\sum_k u_k δ_k = \sum_k u_k` and `\sum_k δ_{ijk} = δ_{ij}`, and
+generalizations of those. Furthermore, `δ_{ijk} A_{ij}` represents the 1D
+diagonal of the matrix `A` with index `k`, and `\sum_k δ_{ijk} u_k` the 2D
+diagonal matrix of `u` with indices `i` and `j`. We point out that we do
+<em>not</em> make use of Einstein's summation convention. All summations are
+made explicit with the ∑ symbol. In absence, operations are to be interpreted
+pointwise.</p>
 
 <p>With notation in place, we can now represent the elasticity tensor in 4D form as
 ``C_{ijkl} = \sum_{mn} \sqrt{ E_m E_n } P_{mn} δ_{ijm} δ_{kln} + \sum_{mn} S_{mn} ( δ_{ikm} δ_{jln} + δ_{ilm} δ_{jkn} ), \label{ortho}``
@@ -82,28 +84,29 @@ verified. However for a more practically useful formulation we like to further
 exploit the internal structure of the P and S matrices. To this end we require
 a slightly altered representation of shear parameters.
 ``g := \begin{bmatrix} G_{23} & G_{31} & G_{12} \end{bmatrix}.``
-Denoting g̅ := g₁ g₂ g₃ and ν̅ := ν₁ν₂ν₃, we can express P and S as
-``P_{ij} = \frac { -\bar{ν} / ν_i ν_j - ν_i ν_j + \sum_k δ_{ijk} ( \bar{ν}/ν_k^2 + 2ν_k^2 - δ_k ) } { \sum_k ν_k^2 + 2 \bar{ν} - 1 },``
-``S_{ij} = \bar{g} / g_i g_j - \sum_k δ_{ijk} \bar{g} / g_k^2.``
+Denoting `\bar g := g_1 g_2 g_3` and `\bar ν := ν_1 ν_2 ν_3`, we can express
+`P` and `S` as
+``P_{ij} = \frac { -\bar ν / ν_i ν_j - ν_i ν_j + \sum_k δ_{ijk} ( \bar ν / ν_k^2 + 2ν_k^2 - δ_k ) } { \sum_k ν_k^2 + 2 \bar ν - 1 },``
+``S_{ij} = \bar g / g_i g_j - \sum_k δ_{ijk} \bar g / g_k^2.``
 Substitution in \eqref{ortho} yields the final expression that captures
-the structure of C in terms of 9 independent parameters E₁ E₂ E₃, ν₁ ν₂ ν₃ and
-g₁ g₂ g₃.
+the structure of C in terms of 9 independent parameters `E_1, E_2, E_3, ν_1,
+ν_2, ν_3, g_1, g_2, g_3`:
 ``C_{ijkl} = \sum_{mn} Μ_{mn} δ_{ijm} δ_{kln} + \sum_p Λ_p δ_{ijklp} + \sum_{mn} Γ_{mn} ( δ_{ikm} δ_{jln} + δ_{ilm} δ_{jkn} ), \label{ortho2}``
 with supporting tensors
 </p>
 <ul>
-<li>`Μ_{mn} = -\sqrt{Eₘ Eₙ} \frac { \bar{ν} / ν_m ν_n  + ν_m ν_n } { \sum_k ν_k^2 + 2 \bar{ν} - 1 }`</li>
-<li>`Λ_p = E_p \frac { \bar{ν} / ν_p^2 + 2ν_p^2 - δ_p } { \sum_k ν_k^2 + 2 \bar{ν} - 1 } - 2 \frac { \bar{g} } { g_p^2 }`</li>
-<li>`Γ_{mn} = \frac { \bar{g} } { g_m g_n }`</li>
+<li>`Μ_{mn} = -\sqrt{Eₘ Eₙ} ( \bar ν / ν_m ν_n  + ν_m ν_n ) \big/ ( \sum_k ν_k^2 + 2 \bar ν - 1 )`</li>
+<li>`Λ_p = E_p ( \bar ν / ν_p^2 + 2ν_p^2 - δ_p ) \big/ ( \sum_k ν_k^2 + 2 \bar ν - 1 ) - 2 \bar g / g_p^2`</li>
+<li>`Γ_{mn} = \bar g / g_m g_n`</li>
 </ul>
 
 <h4>Special case: isotropy</h4>
 
 <p>Be reminded that any isotropic material is by definition also orthotropic.
-To verify formulation \eqref{ortho2} we substitute Young's modulus Eᵢ = Eδᵢ,
-Poisson's ratio νᵢ = νδᵢ, and shear modulus gᵢ = gδᵢ, subject to the
-compatibility relation E = 2 G (ν+1). It follows that Μₘₙ = δₘδₙ Eν /
-(ν+1)(1-2ν), Λₚ = 0 δₚ, Γₘₙ = G δₘδₙ. Hence
+To verify formulation \eqref{ortho2} we substitute Young's modulus `E_i = E δ_i`,
+Poisson's ratio `ν_i = ν δ_i`, and shear modulus `g_i = g δ_i`, subject to the
+compatibility relation `E = 2 G (ν+1)`. It follows that `Μ_{mn} = δ_m δ_n E ν /
+(ν+1) (1-2ν)`, `Λ_p = 0 δ_p`, and `Γ_{mn} = G δ_m δ_n`. Hence
 ``C_{ijkl} = \frac {ν E} {(ν+1)(1-2ν)} δ_{ij} δ_{kl} + G ( δ_{ik} δ_{jl} + δ_{il} δ_{jk} ),``
 corresponding to <a href="http://en.wikipedia.org/wiki/Hooke%27s_law#Isotropic_materials">isotropic theory</a>.
 </p>
@@ -112,7 +115,7 @@ corresponding to <a href="http://en.wikipedia.org/wiki/Hooke%27s_law#Isotropic_m
 
 <p>In practical application the elasticity tensor typically shows up in
 contraction with the strain tensor, typically taken to be the symmetric
-gradient of the displacement field u. Employing various Kronecker contraction
+gradient of the displacement field `u`. Employing various Kronecker contraction
 identities this results in the following concise expression.
 ``σ_{ij} = C_{ijkl} u_{k,l} = \sum_m \left( \sum_n Μ_{mn} u_{n,n} + Λ_m u_{m,m} \right) δ_{ijm} + Γ_{ij} ( u_{i,j} + u_{j,i} ).``
 </p>
