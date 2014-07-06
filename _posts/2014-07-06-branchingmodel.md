@@ -21,4 +21,5 @@ point we finished the transition and development continues as layed out above.
 Today we call on all users to check their applications against the current
 `master` branch an report on any problems they find. Please use and monitor
 github's issue tracker to avoid double findings. For all communication leading
-up to the eventual release please keep an eye on this github issue.
+up to the eventual release please keep an eye on [this]
+(https://github.com/nutils/nutils/issues/30) github issue.
