@@ -125,16 +125,6 @@ img.icon {
   vertical-align: middle;
 }
 
-img.photo {
-  width: 80pt;
-  border-radius: 10pt;
-}
-
-img.portfoliologo {
-  width: 80pt;
-  padding: 25pt 0pt;
-}
-
 .inline {
   display: inline-block;
   vertical-align: middle;
@@ -156,4 +146,19 @@ img.portfoliologo {
 
 .intro {
   font-weight: bold;
+}
+
+.photo {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-style: italic;
+}
+
+.photo img {
+  width: 100%;
 }
