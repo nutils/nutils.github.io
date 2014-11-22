@@ -32,21 +32,17 @@ header, nav, section, footer {
 }
 
 header {
-  max-width: 748px; /* 74 px offset for logo */
-}
-
-header h1 {
-  padding: 12px 0 12px 80px;
-  font-size: 35px;
-  font-weight: normal;
+  margin-top: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
   background-image: url("/images/nutilslogo.png");
   background-repeat: no-repeat;
   background-position: left center;
 }
 
-header h1 img {
-  vertical-align: middle;
-  padding: 0 10px;
+header h1 {
+  font-size: 35px;
+  font-weight: normal;
 }
 
 nav {
