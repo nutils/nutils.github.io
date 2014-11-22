@@ -36,12 +36,12 @@ header {
 }
 
 header h1 {
-  padding-left: 74px;
-  text-indent: -84px;
-  line-height: 10px;
-  margin-bottom: 20px;
-  font-size: 40px;
+  padding: 12px 0 12px 80px;
+  font-size: 35px;
   font-weight: normal;
+  background-image: url("/images/nutilslogo.png");
+  background-repeat: no-repeat;
+  background-position: left center;
 }
 
 header h1 img {
