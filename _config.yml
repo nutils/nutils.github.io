@@ -13,6 +13,8 @@ paginate: 5
 tabs:
   - title: Home
     url: /
+  - title: Gallery
+    url: /gallery.html
   - title: Docs
     url: /docs.html
   - title: News
