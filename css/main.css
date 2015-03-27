@@ -5,6 +5,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   max-width: 750px;
   margin: auto;
+  padding: 10px;
 }
 
 header {
@@ -66,21 +67,15 @@ header nav a {
   text-decoration: none;
 }
 
-div.welcome {
-  font-size: 0px;
-}
-
 div.welcome h1 {
   display: inline-block;
   font-weight: lighter;
   font-size: 40px;
 }
 
-div.welcome span {
-  vertical-align: top;
-  display: inline-block;
-  max-width: 50%;
-  font-size: small;
+div.welcome img {
+  width: 100%;
+  border-radius: 8px;
 }
 
 div.docs {
@@ -170,29 +165,68 @@ div.docs nav span a.select {
   padding-top: 30px;
 }
 
-.galleryitem {
+.overlaycontainer {
   position: relative;
 }
 
-.galleryitem img {
+.overlaycontainer img {
   width: 100%;
 }
 
-.galleryitem video {
+.overlaycontainer video {
   width: 100%;
 }
 
-.galleryitem .overlay {
+.welcome table {
+  border-spacing: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.welcome td {
+  padding: 10px;
+  vertical-align: top;
+}
+
+.overlay {
   position: absolute;
   z-index : 10;
+  padding: 0px;
+  margin: 0px;
+  width: 220px;
+}
+
+.welcome td, .overlay {
   background: rgba(90, 90, 90, 0.6);
   border: 1px solid;
   border-radius: 8px;
   border-color: rgba(90, 90, 90, 0.6);
-  padding: 10px;
-  width: 200px;
 }
 
-.gallery a {
+.overlay a {
   color: #eee;
+}
+
+.overlay ul {
+  padding-left: 20px;
+}
+
+.overlay li {
+  padding-bottom: 5px;
+}
+
+.overlay div {
+  padding: 10px;
+}
+
+.welcome .overlaycontainer {
+  background-image: url("/images/helmholtz.png");
+  background-repeat: no-repeat;
+  background-size: 750px auto;
+  background-position: center;
+}
+
+.welcome .overlay {
+  width: 42.5%;
+  height: 42.5%;
 }
