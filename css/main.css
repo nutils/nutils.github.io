@@ -248,6 +248,10 @@ a {
   margin-bottom: 20px;
 }
 
+.news li p {
+  margin-top: 0px;
+}
+
 .news ul a {
   font-color: inherit;
   text-decoration: inherit;
@@ -264,4 +268,13 @@ a {
 
 .gray {
   color: #777;
+}
+
+figure img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+figcaption {
+  font-style: oblique;
 }

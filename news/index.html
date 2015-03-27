@@ -13,8 +13,8 @@ title: News
 {% endif %}
 {% for post in paginator.posts %}
   <a href="{{ post.url }}"><li>
-  <div class="floatright gray">#{{ paginator.page | minus: 1 | times: paginator.per_page | plus: forloop.index }}</div>
-  <p><b>{{ post.date | date_to_string }} &middot; {{ post.title }}</b></p>
+  <div class="floatright gray">{{ post.date | date_to_string }} &nbsp; #{{ paginator.page | minus: 1 | times: paginator.per_page | plus: forloop.index }}</div>
+  <p><b>{{ post.title }}</b></p>
   <div class="exerpt">
     {{ post.excerpt | strip_html }}
     {% if post.excerpt.size < post.content.size %}[...]{% endif %}
