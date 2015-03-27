@@ -7,29 +7,13 @@ title: News
 
 <!--<a href="/atom.xml"><img src="/images/feedicon.png" class="icon floatright"></img></a>-->
 
-{% capture nav %}
-<p class="nav">
-<b>Posts
-{{ paginator.page | minus: 1 | times: paginator.per_page | plus: 1 }}-{{ paginator.page | minus: 1 | times: paginator.per_page | plus: paginator.posts.size }} of {{ paginator.total_posts }}</b>
-&middot;
-{% if paginator.next_page %}
-  <a href="{{ paginator.next_page_path }}">older</a>
-{% else %}
-  older
-{% endif %}
-&middot;
-{% if paginator.previous_page %}
-  <a href={% if paginator.previous_page == 1 %}"/"{% else %}"{{ paginator.previous_page_path }}"{% endif %}>newer</a>
-{% else %}
-  newer
-{% endif %}
-</p>
-{% endcapture %}
-
-{{ nav }}
 <ul>
+{% if paginator.previous_page %}
+  <a class="gray" href={% if paginator.previous_page == 1 %}"/news/"{% else %}"{{ paginator.previous_page_path }}"{% endif %}><li>Newer posts<div class="floatright gray">#&lt;</div></li></a>
+{% endif %}
 {% for post in paginator.posts %}
   <a href="{{ post.url }}"><li>
+  <div class="floatright gray">#{{ paginator.page | minus: 1 | times: paginator.per_page | plus: forloop.index }}</div>
   <p><b>{{ post.date | date_to_string }} &middot; {{ post.title }}</b></p>
   <div class="exerpt">
     {{ post.excerpt | strip_html }}
@@ -37,7 +21,9 @@ title: News
   </div>
   </li></a>
 {% endfor %}
+{% if paginator.next_page %}
+  <a href="{{ paginator.next_page_path }}"><li>Older posts<div class="floatright gray">#&gt;</div></li></a>
+{% endif %}
 </ul>
-{{ nav }}
 
 </div>

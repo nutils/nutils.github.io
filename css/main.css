@@ -261,3 +261,7 @@ a {
 .floatright {
   float: right;
 }
+
+.gray {
+  color: #777;
+}
