@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<div class="docs">
+
+<div>
+  <h1> {{ page.subtitle }} <h1>
+  {{ content }}
+</div>
+
+<nav>
+  <h1> Getting started </h1>
+  <span><a {% if page.subtitle == "Welcome" %}class="select"{% endif %} class="triangle"></a><a href="/docs/welcome.html"> Welcome </a></span>
+  <span><a {% if page.subtitle == "Before you start" %}class="select"{% endif %} class="triangle"></a><a href="/docs/before_you_start.html"> Before you start </a></span>
+  <span><a {% if page.subtitle == "Installation" %}class="select"{% endif %} class="triangle"></a><a href="/docs/installation.html"> Installation </a></span>
+  <h1> Tutorial </h1>
+  <span><a {% if page.subtitle == "Hello world!" %}class="select"{% endif %} class="triangle"></a><a href="/docs/hello_world.html"> Hello world! </a></span>
+  <span><a {% if page.subtitle == "Domain construction" %}class="select"{% endif %} class="triangle"></a><a href="/docs/domain_construction.html"> Domain construction </a></span>
+  <span><a {% if page.subtitle == "Function spaces" %}class="select"{% endif %} class="triangle"></a><a href="/docs/function_spaces.html"> Function spaces </a></span>
+</nav>
+
+</div>

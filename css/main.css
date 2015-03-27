@@ -1,160 +1,200 @@
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  clear: both;
-}
-
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: small;
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
   background: #222;
   color: #eee;
-}
-
-a {
-  text-decoration: none;
-  color: #007edf;
-  text-shadow: none;
-}
-
-header, nav, section, footer {
-  position: relative;
-  margin: 0 auto;
-  padding: 10px;
-  max-width: 600px;
+  font-size: small;
+  font-family: Helvetica, Arial, sans-serif;
+  max-width: 750px;
+  margin: auto;
 }
 
 header {
-  margin-top: 10px;
-  padding-left: 100px;
-  padding-right: 100px;
-  background-image: url("/images/nutilslogo.png");
-  background-repeat: no-repeat;
-  background-position: left center;
+  text-align: justify; 
 }
 
-header h1 {
-  font-size: 35px;
+header:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    font-size:0;
+    line-height:0;
+}
+
+header div {
+  display: inline-block;
+}
+
+header div img {
+  display: inline-block;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+header div div h1 {
+  font-size: 49px;
   font-weight: normal;
+  padding: 0px;
+  margin: 0px;
 }
 
-nav {
-  max-width: 620px; /* 10 px offset for tab padding */
-  padding: 0;
+header div div h2 {
+  font-size: 15px;
+  font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+}
+
+header nav {
+  display: inline-block;
   font-size: large;
 }
 
-nav span {
-  display: inline-block;
-  vertical-align: top;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: 0;
-  margin: 0;
+header nav span {
+  text-align: center;
+  padding: 5px;
 }
 
-nav span.select {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+header nav span.select {
+  border-radius: 8px;
   background-color: #eee;
   color: #222;
 }
 
-nav a {
+header nav a {
   color: inherit;
-  padding: 0 10px; /* matches section padding */
-  margin: 0;
+  padding: 0 10px;
+  text-decoration: none;
 }
 
-.lightbg {
-  width: 100%;
-  padding-bottom: 10px;
+div.welcome {
+  font-size: 0px;
+}
+
+div.welcome h1 {
+  display: inline-block;
+  font-weight: lighter;
+  font-size: 40px;
+}
+
+div.welcome span {
+  vertical-align: top;
+  display: inline-block;
+  max-width: 50%;
+  font-size: small;
+}
+
+div.docs {
+  margin-top: 50px;
+  max-width: 100%;
+  text-align: justify;
+  font-size: 0;
+}
+
+div.docs div {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div.docs:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    font-size:0;
+    line-height:0;
+}
+
+div.docs div {
+  vertical-align: top;
+  display: inline-block;
   background: #eee;
-  color: #222;
+  color:  #222;
+  border-radius: 8px;
+  width: 580px;
+  font-size: small;
 }
 
-h2 + .nav {
-  margin: -15px 0 20px 0;
+div.docs nav {
+  vertical-align: top;
+  display: inline-block;
+  width: 150px;
+  font-size: small;
 }
 
-div + .nav {
-  margin: 40px 0 0 0;
+div.docs nav h1 {
+  display: block;
+  margin-left: 0px;
+  margin-bottom: 2px;
+  font-size: normal;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  text-indent: 5px;
 }
 
-dl dt {
-  font-weight: bold;
+div.docs nav span {
+  display: block;
 }
 
-dl dd {
-  margin-left: 30px;
-  padding-bottom: 10px;
-}
-
-pre {
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  line-height: 14px;
-  overflow: auto;
-  max-height: 400px;
-}
-
-code {
-  font-size: 12px;
-}
-
-.floatright {
-  float: right;
-}
-
-img.icon {
-  height: 25px;
-  vertical-align: middle;
-}
-
-.inline {
+div.docs nav span a {
+  text-indent: 5px;
+  margin-top: 1px; 
+  margin-bottom: 1px; 
   display: inline-block;
   vertical-align: middle;
+  margin-left: 0px;
+  padding-left: 0px;
+  font-size: small;
+  color: #eee;
+  text-decoration: none;
 }
 
-.exerpt {
-  margin-top: -10px;
-  padding-top: 0;
-  padding-left: 30px;
+div.docs nav span a.triangle {
+  width: 0;
+  height: 0;
+  text-indent: 0px;
+  border-style: solid;
+  border-width: 6px 0 6px 10.4px;
+  border-color: transparent;
 }
 
-.widelist li {
-  padding-top: 10px;
+div.docs nav span a.select {
+  width: 0;
+  height: 0;
+  text-indent: 0px;
+  border-style: solid;
+  border-width: 6px 0 6px 10.4px;
+  border-color: transparent transparent transparent #eee;
 }
 
-.centered {
-  text-align: center;
+.gallery h2 {
+  padding-top: 20px;
 }
 
-.intro {
-  font-weight: bold;
+.galleryitem {
+  position: relative;
 }
 
-.photo {
-  width: 85%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 15px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 7px;
-  font-style: italic;
-}
-
-.photo img {
+.galleryitem img {
   width: 100%;
+}
+
+.galleryitem video {
+  width: 100%;
+}
+
+.galleryitem .overlay {
+  position: absolute;
+  z-index : 10;
+  top : 0;
+  right : 0;
+  background: rgba(90, 90, 90, 0.6);
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: rgba(90, 90, 90, 0.6);
+  padding: 10px;
+  width: 200px;
+}
+
+.gallery a {
+  color: #eee;
 }

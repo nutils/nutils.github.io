@@ -1,0 +1,93 @@
+---
+layout: default
+title: Gallery
+---
+
+<div class="gallery">
+
+  <h2> Goal-adaptive Isogeometric Finite Cell simulation of trabecular bone</h2>
+
+  <div class="galleryitem">
+
+    <img src="/images/trabecular.jpg" alt="Trabecular bone specimen">
+
+    <div class="overlay"> 
+      <p>
+        The effective mechanical properties of trabecular bone specimens can be computed reliably using Isogeometric Analysis (IGA) in combination with the Finite Cell Method (FCM). By directly using micro-CT grayscale data to construct a computational grid, the geometry can be captured with a high precision.
+      </p>
+      <p>
+        Nutils functionality:
+      </p>
+      <p>
+      <ul>
+       <li> Isogeometric Analysis using B-splines and NURBS</li>
+       <li> Local refinements using hierarchical splines</li>
+       <li> Trimmed elements with multi-level integration schemes </li>
+       <li> Goal-adaptive refinement based on dual solution </li>
+      </ul>
+      <p><a href="http://dx.doi.org/10.1016/j.cma.2014.07.009">Comput. Meth. Appl. Mech. Engrg. 284: 138–164, 2015</a></p>
+    </div>
+
+  </div>
+
+<!--
+  <h2>Demixing of immiscible fluids in a tube</h2>
+
+  <div class="galleryitem">
+
+    <video poster="/images/fluidstube.jpg" controls>
+    <source src="http://data.hvzengineering.nl/videos/cahnhilliard.webm" type='video/webm; codecs="vp8.0, vorbis"'>
+    <source src="http://data.hvzengineering.nl/videos/cahnhilliard.ogv" type='video/ogg; codecs="theora, vorbis"'>
+    <source src="http://data.hvzengineering.nl/videos/cahnhilliard.mp4" type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'>
+    </video>
+
+    <div class="overlay"> 
+      <p>
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      Some nice text about this fancy simulation.
+      </p>
+      <ul>
+       <li> Cool feature 1 </li>
+       <li> Cool feature 2 </li>
+       <li> Cool feature 3 </li>
+      </ul>
+    </div>
+
+  </div>
+-->
+
+  <h2>Weakly-enforced Slip Method: smeared simulation of a tectonic fault</h2>
+
+  <div class="galleryitem">
+
+    <img src="/images/wsmfault.jpg" alt="WSM Fault">
+
+    <div class="overlay"> 
+      <p>
+      Earth surface displacement due to earthquakes is commonly modelled by
+      placing a dislocation in an elastic medium. The standard finite element
+      approach introduces discontinuities between element interfaces. Here the
+      displacement field remains continuous. In this smeared approach the mesh
+      and stiffness matrix remain independent of the fault, allowing for
+      optimal reuse of computational components.</p>
+      <ul>
+       <li> Integration over embedded manifold using element trimming </li>
+       <li> Interfacing with external libraries providing reference solution </li>
+       <li> Isogeometric analysis using B-splines </li>
+      </ul>
+      <p><a href="http://dx.doi.org/10.1016/j.cma.2013.12.004">Comput. Meth. Appl. Mech. Engrg. 271: 144–166, 2014</a></p>
+    </div>
+
+  </div>
+
+</div>
