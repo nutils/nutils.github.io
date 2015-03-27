@@ -8,7 +8,9 @@ github: nutils
 
 markdown: redcarpet
 pygments: true
+
 paginate: 5
+paginate_path: "news/page:num/"
 
 tabs:
   - title: Home
@@ -17,8 +19,8 @@ tabs:
     url: /gallery.html
 # - title: Docs
 #   url: /docs.html
-# - title: News
-#   url: /news.html
+  - title: News
+    url: /news
 # - title: About
 #   url: /about.html
 

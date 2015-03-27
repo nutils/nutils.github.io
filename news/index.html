@@ -3,7 +3,9 @@ layout: default
 title: News
 ---
 
-<a href="/atom.xml"><img src="/images/feedicon.png" class="icon floatright"></img></a>
+<div class="news">
+
+<!--<a href="/atom.xml"><img src="/images/feedicon.png" class="icon floatright"></img></a>-->
 
 {% capture nav %}
 <p class="nav">
@@ -25,15 +27,17 @@ title: News
 {% endcapture %}
 
 {{ nav }}
+<ul>
 {% for post in paginator.posts %}
-  <p><b>{{ post.date | date_to_string }} &middot; <a href="{{ post.url }}">{{ post.title }}</a></b>{% if post.tags.size > 0 %} [{% for tag in post.tags %}<a href="/tags/{{tag}}.html">{{tag}}</a>{% endfor %}]{% endif %}</p>
+  <a href="{{ post.url }}"><li>
+  <p><b>{{ post.date | date_to_string }} &middot; {{ post.title }}</b></p>
   <div class="exerpt">
-    {% if post.excerpt.size < post.content.size %}
-      {% capture readmore %} [<a href="{{ post.url }}">...</a>]</p>{% endcapture %}
-      {{ post.excerpt | replace: '</p>', readmore }}
-    {% else %}
-      {{ post.excerpt }}
-    {% endif %}
+    {{ post.excerpt | strip_html }}
+    {% if post.excerpt.size < post.content.size %}[...]{% endif %}
   </div>
+  </li></a>
 {% endfor %}
+</ul>
 {{ nav }}
+
+</div>
