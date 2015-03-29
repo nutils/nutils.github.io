@@ -27,8 +27,7 @@ ul {
 
 pre {
   max-height: 300px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: auto;
   border: 1px dashed #777;
   padding: 8px;
 }
@@ -48,11 +47,7 @@ hr {
   display: block;
   max-width: 950px;
   margin: 0px auto;
-  padding: 0px 8px;
-}
-
-.more {
-  display: none;
+  padding: 0px 10px;
 }
 
 .caption {
@@ -293,15 +288,23 @@ header #nav a {
   margin-top: 20px;
   margin-bottom: 20px;
   font-weight: normal;
-  background: rgba(90, 90, 90, 0.6);
+  background: rgba(90, 90, 90, 0.2);
   border: 1px solid;
   border-radius: 8px;
   border-color: rgba(90, 90, 90, 0.6);
   overflow: hidden;
 }
 
-#news li.bubble:hover {
-  background: rgba(90, 90, 90, 0.8);
+#news li.bubble:hover, #news li.selected {
+  background: rgba(90, 90, 90, 0.6);
+}
+
+#news .more {
+  display: none;
+}
+
+#news .selected .more {
+  display: block;
 }
 
 #news .date {

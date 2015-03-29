@@ -1,7 +1,7 @@
 ---
 layout: default
 title: News
-scripts: [ less_more, mathjax ]
+scripts: mathjax
 ---
 
 <div id="news" class="center">
@@ -13,10 +13,12 @@ scripts: [ less_more, mathjax ]
   <a href={% if paginator.previous_page == 1 %}"/news/"{% else %}"{{ paginator.previous_page_path }}"{% endif %}><li class="bubble"><div class="date">#&lt;</div><p>Newer posts</p></li></a>
 {% endif %}
 {% for post in paginator.posts %}
-  <li class="bubble" onclick="less_more(this)">
+{% assign parts = post.content | split: "<!--more-->" %}
+{% assign nparts = parts | size %}
+  {% if nparts > 1 %} <li class="bubble" onclick="this.classList.toggle('selected')"> {% else %} <li class="bubble selected"> {% endif %}
   <div class="date">{{ post.date | date_to_string }} &nbsp; #{{ paginator.page | minus: 1 | times: paginator.per_page | plus: forloop.index }}</div>
-  <p><b>{{ post.title }}</b></p>
-    {{ post.content }}
+  <h3>{{ post.title }}</h3>
+  <div>{{ parts | join: '</div><div class="more">' }}</div>
   </li>
 {% endfor %}
 {% if paginator.next_page %}
