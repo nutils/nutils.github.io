@@ -3,11 +3,11 @@ layout: default
 title: News
 ---
 
-<div class="news">
+<div id="news" class="center">
 
 <!--<a href="/atom.xml"><img src="/images/feedicon.png" class="icon floatright"></img></a>-->
 
-<ul>
+<ul style="clear: both;">
 {% if paginator.previous_page %}
   <a class="gray" href={% if paginator.previous_page == 1 %}"/news/"{% else %}"{{ paginator.previous_page_path }}"{% endif %}><li>Newer posts<div class="floatright gray">#&lt;</div></li></a>
 {% endif %}

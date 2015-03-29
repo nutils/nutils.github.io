@@ -1,96 +1,158 @@
+/*** GENERAL ***/
+
 body {
   background: #222;
   color: #eee;
   font-size: small;
   font-family: Helvetica, Arial, sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+h2 {
+  font-weight: normal;
+  clear: both;
+}
+
+ul {
+  padding-left: 25px;
+}
+
+.center {
+  display: block;
   max-width: 750px;
+  margin: 0px auto;
+  padding: 0px 10px;
+}
+
+.widecenter {
+  display: block;
+  max-width: 950px;
+  margin: 0px auto;
+  padding: 0px 8px;
+}
+
+
+/*** HEADER ***/
+
+header table {
+  width: 100%;
+}
+
+header #logo {
+  background-image: url("/images/nutilslogo.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 84px;
   margin: auto;
-  padding: 10px;
 }
 
-header {
-  text-align: justify; 
-}
-
-header:after{
-    content: '';
-    display: inline-block;
-    width: 100%;
-    height: 0;
-    font-size:0;
-    line-height:0;
-}
-
-header div {
-  display: inline-block;
-}
-
-header div img {
-  display: inline-block;
-  padding-right: 10px;
-  padding-top: 10px;
-}
-
-header div div h1 {
+header #logo h1 {
   font-size: 49px;
   font-weight: normal;
   padding: 0px;
   margin: 0px;
 }
 
-header div div h2 {
+header #logo h2 {
   font-size: 15px;
   font-weight: normal;
   padding: 0px;
   margin: 0px;
 }
 
-header nav {
-  display: inline-block;
+header #nav {
+  text-align: right;
   font-size: large;
 }
 
-header nav span {
+header #nav li {
+  list-style-type: none;
   text-align: center;
-  padding: 5px;
+  padding: 5px 10px;
 }
 
-header nav span.select {
+header #nav li.select {
   border-radius: 8px;
   background-color: #eee;
   color: #222;
 }
 
-header nav a {
-  color: inherit;
-  padding: 0 10px;
-  text-decoration: none;
+header #nav a {
+  font-weight: normal;
 }
 
-div.welcome h1 {
-  display: inline-block;
-  font-weight: lighter;
-  font-size: 40px;
+@media screen and (min-width: 750px) {
+  header table {
+    padding: 16px 0px;
+  }
+  header #nav li {
+    display: inline-block;
+  }
 }
 
-div.welcome img {
+
+/*** WELCOME ***/
+
+#welcome h1 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 25px;
+}
+
+#welcome img {
   width: 100%;
   border-radius: 8px;
 }
 
-div.docs {
+#welcome table {
+  padding: 0px;
+  border-spacing: 20px;
+}
+
+#welcome td {
+  padding: 0px 10px;
+  vertical-align: top;
+  background: rgba(90, 90, 90, 0.6);
+  border: 1px solid;
+  border-radius: 8px;
+  border-color: rgba(90, 90, 90, 0.6);
+}
+
+#welcome .helmholtz {
+  background-image: url("/images/helmholtz.png");
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+@media screen and (min-width: 750px) {
+  #welcome h1 {
+    font-size: 35px;
+  }
+}
+
+
+/*** DOCS ***/
+
+.docs {
   margin-top: 50px;
   max-width: 100%;
   text-align: justify;
   font-size: 0;
 }
 
-div.docs div {
+.docs div {
   padding-left: 10px;
   padding-right: 10px;
 }
 
-div.docs:after{
+.docs:after{
     content: '';
     display: inline-block;
     width: 100%;
@@ -99,7 +161,7 @@ div.docs:after{
     line-height:0;
 }
 
-div.docs div {
+.docs div {
   vertical-align: top;
   display: inline-block;
   background: #eee;
@@ -109,14 +171,14 @@ div.docs div {
   font-size: small;
 }
 
-div.docs nav {
+.docs nav {
   vertical-align: top;
   display: inline-block;
   width: 150px;
   font-size: small;
 }
 
-div.docs nav h1 {
+.docs nav h1 {
   display: block;
   margin-left: 0px;
   margin-bottom: 2px;
@@ -126,11 +188,11 @@ div.docs nav h1 {
   text-indent: 5px;
 }
 
-div.docs nav span {
+.docs nav span {
   display: block;
 }
 
-div.docs nav span a {
+.docs nav span a {
   text-indent: 5px;
   margin-top: 1px; 
   margin-bottom: 1px; 
@@ -143,7 +205,7 @@ div.docs nav span a {
   text-decoration: none;
 }
 
-div.docs nav span a.triangle {
+.docs nav span a.triangle {
   width: 0;
   height: 0;
   text-indent: 0px;
@@ -152,7 +214,7 @@ div.docs nav span a.triangle {
   border-color: transparent;
 }
 
-div.docs nav span a.select {
+.docs nav span a.select {
   width: 0;
   height: 0;
   text-indent: 0px;
@@ -161,120 +223,116 @@ div.docs nav span a.select {
   border-color: transparent transparent transparent #eee;
 }
 
-.gallery h2 {
-  padding-top: 30px;
-}
 
-.overlaycontainer {
-  position: relative;
-}
+/*** GALLERY ***/
 
-.overlaycontainer img {
+#gallery img, #gallery video {
   width: 100%;
 }
 
-.overlaycontainer video {
-  width: 100%;
+#gallery h2 {
+  padding-top: 16px;
+  margin-bottom: 6px;
 }
 
-.welcome table {
-  border-spacing: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+#gallery .caption {
+  font-style: oblique;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
-.welcome td {
-  padding: 10px;
-  vertical-align: top;
+@media screen and (min-width: 600px) {
+  #gallery img, #gallery video {
+    width: calc(100% - 290px);
+  }
+  #gallery .textleft {
+    float: left;
+  }
+  #gallery .textright {
+    float: right;
+  }
+  #gallery .textleft, #gallery .textright {
+    background: rgba(90, 90, 90, 0.6);
+    border: 1px solid;
+    border-radius: 8px;
+    border-color: rgba(90, 90, 90, 0.6);
+    padding: 8px;
+    width: 200px;
+    margin: 20px;
+  }
 }
 
-.overlay {
-  position: absolute;
-  z-index : 10;
-  padding: 0px;
+
+/*** NEWS ***/
+
+#news ul {
   margin: 0px;
-  width: 220px;
+  padding: 0px;
 }
 
-.welcome td, .overlay, .news li {
+#news li {
+  padding: 10px;
+  list-style-type: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: normal;
   background: rgba(90, 90, 90, 0.6);
   border: 1px solid;
   border-radius: 8px;
   border-color: rgba(90, 90, 90, 0.6);
 }
 
-.overlay a {
-  color: #eee;
-}
-
-a {
-  color: #007edf;
-  text-decoration: none;
-}
-
-.overlay ul {
-  padding-left: 20px;
-}
-
-.overlay li {
-  padding-bottom: 5px;
-}
-
-.overlay div {
-  padding: 10px;
-}
-
-.welcome .overlaycontainer {
-  background-image: url("/images/helmholtz.png");
-  background-repeat: no-repeat;
-  background-size: 750px auto;
-  background-position: center;
-}
-
-.welcome .overlay {
-  width: 42.5%;
-  height: 42.5%;
-}
-
-.news ul {
-  margin: 0px;
-  padding: 0px;
-}
-
-.news li {
-  padding: 10px;
-  list-style-type: none;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.news li p {
+#news li p {
   margin-top: 0px;
 }
 
-.news ul a {
+#news ul a {
   font-color: inherit;
   text-decoration: inherit;
   color: #eee;
 }
 
-.news li:hover {
+#news li:hover {
   background: rgba(90, 90, 90, 0.8);
 }
 
-.floatright {
+#news .gray {
+  color: #777;
   float: right;
 }
 
-.gray {
-  color: #777;
-}
 
-figure img {
-  width: 100%;
-  border-radius: 8px;
-}
+/*** POST ***/
 
-figcaption {
+#post .caption {
   font-style: oblique;
+}
+
+#post figure {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+#post figure img {
+  width: 100%;
+}
+
+#post figcaption {
+  font-style: oblique;
+  padding-top: 3px;
+  margin-top: 3px;
+}
+
+@media screen and (min-width: 750px) {
+  #post figure {
+    width: 375px;
+    float: right;
+    margin: 8px;
+    background: rgba(90, 90, 90, 0.6);
+    border: 1px solid;
+    border-radius: 8px;
+    border-color: rgba(90, 90, 90, 0.6);
+    padding: 8px;
+  }
 }

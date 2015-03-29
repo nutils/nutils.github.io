@@ -3,17 +3,22 @@ layout: default
 title: Gallery
 ---
 
-<div class="gallery">
+<div id="gallery">
 
-  <h2>Goal-adaptive Isogeometric Finite Cell simulation of trabecular bone</h2>
+  <div class="center">
+    <h2>Goal-adaptive Isogeometric Finite Cell simulation of trabecular bone</h2>
+    <p class="caption">In: Computational Methods in Applied Mechanical Engineering <a href="http://dx.doi.org/10.1016/j.cma.2014.07.009">284: 138–164, 2015</a>.</p>
+  </div>
 
-  <div class="overlaycontainer">
+  <div class="widecenter">
 
-    <img src="/images/trabecular.jpg" alt="Trabecular bone specimen">
-
-    <div class="overlay" style="right: 5%; top: 5%"><div>
+    <div class="textright">
       <p>
-        The effective mechanical properties of trabecular bone specimens can be computed reliably using Isogeometric Analysis (IGA) in combination with the Finite Cell Method (FCM). By directly using micro-CT grayscale data to construct a computational grid, the geometry can be captured with a high precision.
+        The effective mechanical properties of trabecular bone specimens can be
+        computed reliably using Isogeometric Analysis (IGA) in combination with
+        the Finite Cell Method (FCM). By directly using micro-CT grayscale data
+        to construct a computational grid, the geometry can be captured with a
+        high precision.
       </p>
       <p>
         Nutils functionality:
@@ -25,8 +30,9 @@ title: Gallery
        <li> Trimmed elements with multi-level integration schemes </li>
        <li> Goal-adaptive refinement based on dual solution </li>
       </ul>
-      <p><a href="http://dx.doi.org/10.1016/j.cma.2014.07.009">Comput. Meth. Appl. Mech. Engrg. 284: 138–164, 2015</a></p>
-    </div></div>
+    </div>
+
+    <img src="/images/trabecular.jpg" alt="Trabecular bone specimen" class="floatleft">
 
   </div>
 
@@ -41,7 +47,7 @@ title: Gallery
     <source src="http://data.hvzengineering.nl/videos/cahnhilliard.mp4" type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'>
     </video>
 
-    <div class="overlay"> 
+    <div class="transparent"> 
       <p>
       Some nice text about this fancy simulation.
       Some nice text about this fancy simulation.
@@ -66,15 +72,15 @@ title: Gallery
   </div>
 -->
 
-  <h2>Weakly-enforced Slip Method: smeared simulation of a tectonic fault</h2>
+  <div class="center">
+    <h2>Weakly-enforced Slip Method: smeared simulation of a tectonic fault</h2>
+    <p class="caption">In: Computational Methods in Applied Mechanical Engineering <a href="http://dx.doi.org/10.1016/j.cma.2013.12.004">271: 144–166, 2014</a>.</p>
+  </div>
 
-  <div class="overlaycontainer">
+  <div class="widecenter">
 
-    <img src="/images/wsmfault.jpg" alt="WSM Fault">
-
-    <div class="overlay" style="right: 0%; top: 5%"><div>
-      <p>
-      Earth surface displacement due to earthquakes is commonly modelled by
+    <div class="textleft">
+      <p>Earth surface displacement due to earthquakes is commonly modelled by
       placing a dislocation in an elastic medium. The standard finite element
       approach introduces discontinuities between element interfaces. Here the
       displacement field remains continuous. In this smeared approach the mesh
@@ -85,20 +91,26 @@ title: Gallery
        <li> Interfacing with external libraries providing reference solution </li>
        <li> Isogeometric analysis using B-splines </li>
       </ul>
-      <p><a href="http://dx.doi.org/10.1016/j.cma.2013.12.004">Comput. Meth. Appl. Mech. Engrg. 271: 144–166, 2014</a></p>
-    </div></div>
+    </div>
+
+    <img src="/images/wsmfault.jpg" alt="WSM Fault" class="floatright">
 
   </div>
 
-  <h2>Phase-field simulation of brittle fracture</h2>
+  <div class="center">
+    <h2>Phase-field simulation of brittle fracture</h2>
+    <p class="caption">Unpublished work.</p>
+  </div>
 
-  <div class="overlaycontainer">
+  <div class="widecenter">
 
-    <img src="/images/fracture.jpg" alt="Phase field fracture">
-
-    <div class="overlay" style="left: 5%; top: 5%"><div>
+    <div class="textright">
       <p>
-        Complex fracture patterns in brittle materials can be captured using phase-field simulations. By using a phase field (or damage) field to mimic material degradation due to cracking, mechanisms such as nucleation, propagation, branching and coalescence follow directly from energy minimization principles.
+        Complex fracture patterns in brittle materials can be captured using
+        phase-field simulations. By using a phase field (or damage) field to
+        mimic material degradation due to cracking, mechanisms such as
+        nucleation, propagation, branching and coalescence follow directly from
+        energy minimization principles.
       </p>
       <p>
         Nutils functionality:
@@ -110,7 +122,9 @@ title: Gallery
        <li> Integration with nonlinear solvers </li>
        <li> Parallel computing </li>
       </ul>
-    </div></div>
+    </div>
+
+    <img src="/images/fracture.jpg" alt="Phase field fracture" class="floatleft">
 
   </div>
 

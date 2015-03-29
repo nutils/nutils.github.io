@@ -2,20 +2,17 @@
 layout: default
 ---
 
-<h3>{{ page.title }}</h3>
+<div id="post" class="center">
 
-<p class="nav">
+<h2>{{ page.title }}</h2>
+
+<p class="caption">
 {% if page.author %}
-<em>By {{ page.author }}</em>
-&middot;
+By {{ page.author }},
 {% endif %}
-<b>{{ page.date | date_to_string }}</b>
-&middot;
-{% if page.previous %}<a href="{{ page.previous.url }}">older</a>{% else %}older{% endif %}
-&middot;
-{% if page.next %}<a href="{{ page.next.url }}">newer</a>{% else %}newer{% endif %}
+{{ page.date | date_to_string }}.
 </p>
 
-<div class="post">
 {{ content }}
+
 </div>

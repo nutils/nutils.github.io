@@ -2,19 +2,24 @@
 layout: body
 ---
 
-<header>
-  <div>
-  <img src="/images/nutilslogo.png">
-  <div>
-  <h1>{{ site.shortname }}</h1>
-  <h2> Numerical Utilities</h2>
-  </div>
-  </div>
-  <nav>
-    {% for tab in site.tabs %}<span {% if page.title == tab.title %}class="select"{% endif %}>
-      <a href="{{ tab.url }}">{{ tab.title | downcase }}</a>
-    </span>{% endfor %}
-  </nav>
+<header class="center">
+  <table>
+    <tr>
+      <td id="logo">
+        <h1>Nutils</h1>
+        <h2>Numerical Utilities</h2>
+      </td>
+      <td id="nav">
+        <ul>
+        {% for tab in site.tabs %}
+          <li {% if page.title == tab.title %}class="select"{% endif %}>
+            <a href="{{ tab.url }}">{{ tab.title | downcase }}</a>
+          </li>
+        {% endfor %}
+        </ul>
+      </td>
+    </tr>
+  </table>
 </header>
 
 <section>
