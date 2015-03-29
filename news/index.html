@@ -1,28 +1,26 @@
 ---
 layout: default
 title: News
+scripts: [ less_more, mathjax ]
 ---
 
 <div id="news" class="center">
 
 <!--<a href="/atom.xml"><img src="/images/feedicon.png" class="icon floatright"></img></a>-->
 
-<ul style="clear: both;">
+<ul class="bubble">
 {% if paginator.previous_page %}
-  <a class="gray" href={% if paginator.previous_page == 1 %}"/news/"{% else %}"{{ paginator.previous_page_path }}"{% endif %}><li>Newer posts<div class="floatright gray">#&lt;</div></li></a>
+  <a href={% if paginator.previous_page == 1 %}"/news/"{% else %}"{{ paginator.previous_page_path }}"{% endif %}><li class="bubble"><div class="date">#&lt;</div><p>Newer posts</p></li></a>
 {% endif %}
 {% for post in paginator.posts %}
-  <a href="{{ post.url }}"><li>
-  <div class="floatright gray">{{ post.date | date_to_string }} &nbsp; #{{ paginator.page | minus: 1 | times: paginator.per_page | plus: forloop.index }}</div>
+  <li class="bubble" onclick="less_more(this)">
+  <div class="date">{{ post.date | date_to_string }} &nbsp; #{{ paginator.page | minus: 1 | times: paginator.per_page | plus: forloop.index }}</div>
   <p><b>{{ post.title }}</b></p>
-  <div class="exerpt">
-    {{ post.excerpt | strip_html }}
-    {% if post.excerpt.size < post.content.size %}[...]{% endif %}
-  </div>
-  </li></a>
+    {{ post.content }}
+  </li>
 {% endfor %}
 {% if paginator.next_page %}
-  <a href="{{ paginator.next_page_path }}"><li>Older posts<div class="floatright gray">#&gt;</div></li></a>
+  <a href="{{ paginator.next_page_path }}"><li class="bubble"><div class="date">#&gt;</div><p>Older posts</p></li></a>
 {% endif %}
 </ul>
 

@@ -1,0 +1,111 @@
+---
+layout: post
+title: "BLAS issues"
+tags: support
+author: Gertjan van Zwieten
+---
+
+<p>
+Two months ago I reported on <a
+href="https://github.com/nutils/nutils/issues/8">this strange issue</a> that
+was triggered by numpy within a forked process, causing the program to hang
+indefinitely. A <a href="https://github.com/nutils/nutils/issues/8">duplicate
+issue</a> led to <a href="http://www.openblas.net/">OpenBLAS</a> being the
+culprit, in particular its multithreading capabilities, which opened up an easy
+fix in the form of disabling these via an environment variable
+<tt>OPENBLAS_NUM_THREADS=1</tt>. Problem solved. Until last month, when an
+update rendered the fix invalid on two separate Debian machines.
+</p>
+
+<div class="more">
+
+<p>
+An alternative fix seems to be to discard OpenBLAS altogether and switch to one
+of the many other BLAS implementations. The self-optimizing <a
+href="http://math-atlas.sourceforge.net/">ATLAS</a> project appears to work
+well, an is easily installed from the package archive as
+<tt>libatlas3-base</tt>. Two things to note: 1. Installing an additional BLAS
+library makes the machine having to choose from multiple options; an additional
+step is required to make it pick ATLAS. 2. The packaged version being
+precompiled it is not tuned for the system you are installing on, but also that
+is curable. Let's take these one by one.
+</p>
+
+<p>
+In order to deal with multiple libraries/software providing the same service
+Debian uses an <a
+href="https://wiki.debian.org/DebianAlternatives">alternatives system</a>. A
+set of symlinks is maintained in the directory <tt>/etc/alternatives</tt> with
+names like <tt>editor</tt>, <tt>mpg123</tt>, and <tt>libblas.so</tt>. Packages
+with a <tt>provides</tt> field register alternatives at installation, and the
+one with highest priority gets to be symlinked in auto mode. To switch to
+manual mode and select ATLAS from a list use the administration tool:
+</p>
+
+<pre>
+# update-alternatives --config libblas.so.3
+
+There are 3 choices for the alternative libblas.so.3 (providing
+/usr/lib/libblas.so.3).
+
+  Selection    Path                                     Priority   Status
+------------------------------------------------------------
+  0            /usr/lib/openblas-base/libopenblas.so.0   40        auto mode
+* 1            /usr/lib/atlas-base/atlas/libblas.so.3    35        manual mode
+  2            /usr/lib/libblas/libblas.so.3             10        manual mode
+  3            /usr/lib/openblas-base/libopenblas.so.0   40        manual mode
+</pre>
+
+<p>
+Similarly you can change <tt>liblapack.so.3</tt> from the default (<a
+href="http://www.netlib.org/lapack/">Netlib</a>) to ATLAS, even though there
+are no known issues with the former.
+</p>
+
+<p>
+To generate optimized libraries we can follow the instructions in
+<tt>/usr/share/doc/libatlas3-base/README.Debian</tt>. The relevant steps are:
+</p>
+
+<pre>
+# apt-get source atlas
+# apt-get build-dep atlas
+# apt-get install devscripts
+# cd atlas-3.10.1
+# fakeroot debian/rules custom
+</pre>
+
+<p>
+Proceed by installing all the generated .deb packages. They will automatically
+have higher priority than the default packages and can peacefully coexist with
+the rest of the Debian software stack. Compilation will take a fair amount of
+time, and I have not been able to determine if the automatic tuning is affected
+by system load (advice appreciated).
+</p>
+
+<p>
+One interesting thing that came out of the compilation process is that my
+processors were not operating in performance mode. Most desktop environments
+provide widgets or other means to update frequency scaling, but on headless
+servers suboptimal settings may evidently go unnoticed. The build process
+suggests to use <tt>cpufreq-set</tt> to change the frequency for each
+individual CPU separately, but this will be undone at reboot. Better is to do
+as described <a
+href="https://wiki.debian.org/HowTo/CpuFrequencyScaling">here</a>, and create a
+file <tt>/etc/default/cpufrequtils</tt> to define the <tt>GOVERNOR</tt>
+variable:
+</p>
+
+<pre>
+# valid values: userspace conservative powersave ondemand performance
+# get them from cat
+# /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors 
+GOVERNOR="performance"
+</pre>
+
+<p>
+Follow this by <tt>service cpufrequtils restart</tt> to update all CPU frequencies, and
+keep them updated also after reboot.
+</p>
+
+</div>
