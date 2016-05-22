@@ -14,7 +14,7 @@ tabs:
   - title: Home
     url: /
   - title: Gallery
-    url: /gallery.html
+    url: /gallery
   - title: News
     url: /news
   - title: Docs

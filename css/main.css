@@ -106,15 +106,6 @@ header #nav a {
   font-weight: normal;
 }
 
-@media screen and (min-width: 750px) {
-  header table {
-    padding: 16px 0px;
-  }
-  header #nav li {
-    display: inline-block;
-  }
-}
-
 
 /*** WELCOME ***/
 
@@ -147,12 +138,6 @@ header #nav a {
   background-image: url("/images/helmholtz.png");
   background-repeat: repeat-x;
   background-position: center;
-}
-
-@media screen and (min-width: 750px) {
-  #welcome h1 {
-    font-size: 35px;
-  }
 }
 
 
@@ -244,35 +229,27 @@ header #nav a {
 
 /*** GALLERY ***/
 
-#gallery img, #gallery video {
-  width: 100%;
-}
-
 #gallery h2 {
   padding-top: 16px;
   margin-bottom: 6px;
 }
 
-@media screen and (min-width: 600px) {
-  #gallery img, #gallery video {
-    width: calc(100% - 290px);
-  }
-  #gallery .textleft {
-    float: left;
-  }
-  #gallery .textright {
-    float: right;
-  }
-  #gallery .textleft, #gallery .textright {
-    background: rgba(90, 90, 90, 0.6);
-    border: 1px solid;
-    border-radius: 8px;
-    border-color: rgba(90, 90, 90, 0.6);
-    padding: 8px;
-    width: 200px;
-    margin: 20px;
-  }
+#gallery img {
+  border: 1px solid #333;
+  padding: 0px;
+  margin: 2px;
+  width: 45%;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%); 
+  -o-filter: grayscale(100%); 
 }
+
+#gallery img:hover {
+  border: 1px solid #aaa;
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+} 
 
 
 /*** NEWS ***/
@@ -334,7 +311,38 @@ header #nav a {
   margin-top: 3px;
 }
 
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 0px;
+  height: 0;
+  border: 1px solid #333;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/*** LARGE SCREEN ***/
+
 @media screen and (min-width: 750px) {
+  header table {
+    padding: 16px 0px;
+  }
+  header #nav li {
+    display: inline-block;
+  }
+  #welcome h1 {
+    font-size: 35px;
+  }
+  #gallery img {
+    width: 32%;
+  }
   #news figure {
     width: 350px;
     float: right;
