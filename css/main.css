@@ -1,8 +1,8 @@
 /*** GENERAL ***/
 
 body {
-  background: #222;
-  color: #eee;
+  background: black;
+  color: white;
   font-size: small;
   font-family: Helvetica, Arial, sans-serif;
   padding: 0px;
@@ -137,10 +137,10 @@ header #nav a {
 #welcome td {
   padding: 0px 10px;
   vertical-align: top;
-  background: rgba(90, 90, 90, 0.6);
+  background: rgba(90, 90, 90, 0.3);
   border: 1px solid;
   border-radius: 8px;
-  border-color: rgba(90, 90, 90, 0.6);
+  border-color: rgba(90, 90, 90, 0.1);
 }
 
 #welcome .helmholtz {
