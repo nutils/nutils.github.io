@@ -63,28 +63,6 @@ header table {
   width: 100%;
 }
 
-header #logo {
-  background-image: url("/images/nutilslogo.png");
-  background-repeat: no-repeat;
-  background-position: left center;
-  padding-left: 84px;
-  margin: auto;
-}
-
-header #logo h1 {
-  font-size: 49px;
-  font-weight: normal;
-  padding: 0px;
-  margin: 0px;
-}
-
-header #logo h2 {
-  font-size: 15px;
-  font-weight: normal;
-  padding: 0px;
-  margin: 0px;
-}
-
 header #nav {
   text-align: right;
   font-size: large;
@@ -349,4 +327,12 @@ header #nav a {
     padding-left: 8px;
     padding-bottom: 8px;
   }
+}
+
+
+#page {
+  display: block;
+  max-width: 750px;
+  margin: 0px auto;
+  padding: 0px 10px;
 }

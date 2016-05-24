@@ -6,17 +6,13 @@ domain: www.nutils.org
 google_id: UA-45178960-1
 github: nutils
 
-gems: [jekyll-paginate]
-paginate: 5
-paginate_path: "news/page:num/"
-
 tabs:
-  - title: Home
-    url: /
+  - title: About
+    url: /about.html
   - title: Gallery
     url: /gallery
-  - title: News
-    url: /news
+  - title: Science
+    url: /science.html
   - title: Docs
     url: http://docs.nutils.org
   - title: Github
