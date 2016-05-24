@@ -13,9 +13,9 @@ tabs:
     url: /gallery
   - title: Science
     url: /science.html
-  - title: Docs
+  - title: Docs↪
     url: http://docs.nutils.org
-  - title: Github
+  - title: Github↪
     url: http://github.com/nutils
 
 scripts: google_analytics
