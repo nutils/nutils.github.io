@@ -1,12 +1,12 @@
-/*** GENERAL ***/
-
 body {
   background: black;
   color: white;
-  font-size: small;
   font-family: Helvetica, Arial, sans-serif;
   padding: 0px;
   margin: 0px;
+}
+@media screen and (min-width: 750px) {
+  body { padding: 20px 0px; }
 }
 
 a {
@@ -15,25 +15,19 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  font-size: 150%;
+  font-weight: bold;
+}
+
 h2 {
-  font-weight: normal;
-  clear: both;
+  font-size: 110%;
+  font-weight: bold;
 }
 
-ul {
-  padding-left: 25px;
-  margin-bottom: 10px;
-}
-
-pre {
-  max-height: 300px;
-  overflow: auto;
-  border: 1px dashed #777;
-  padding: 8px;
-}
-
-hr {
-  border: 1px solid #777;
+h3 {
+  font-size: 100%;
+  font-weight: bold;
 }
 
 .center {
@@ -45,65 +39,74 @@ hr {
 
 .widecenter {
   display: block;
-  max-width: 950px;
+  max-width: 1000px;
   margin: 0px auto;
   padding: 0px 10px;
 }
 
-.caption {
-  font-style: oblique;
+.widecenter h1 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 200%;
+}
+@media screen and (min-width: 750px) {
+  .widecenter h1 { font-size: 250%; }
+}
+
+.videowrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
   padding-top: 0px;
-  margin-top: 0px;
+  height: 0;
+  border: 1px solid #333;
+}
+
+.videowrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 
 /*** HEADER ***/
 
-header table {
-  width: 100%;
-}
-
-header #nav {
-  text-align: right;
-  font-size: large;
-}
-
-header #nav li {
+header li {
   list-style-type: none;
+  font-size: 125%;
   text-align: center;
   padding: 5px 10px;
 }
+@media screen and (min-width: 750px) {
+  header li { display: inline-block; }
+}
 
-header #nav li.select {
+header li.select {
   border-radius: 8px;
   background-color: #eee;
   color: #222;
 }
 
-header #nav a {
+header a {
   font-weight: normal;
 }
 
 
-/*** WELCOME ***/
+/*** HELMHOLTZ ***/
 
-#welcome h1 {
-  text-align: center;
-  font-weight: normal;
-  font-size: 25px;
+#helmholtz {
+  background-image: url("/images/helmholtz.png");
+  background-repeat: repeat-x;
+  background-position: center;
 }
 
-#welcome img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-#welcome table {
+#helmholtz table {
   padding: 0px;
   border-spacing: 20px;
 }
 
-#welcome td {
+#helmholtz td {
   padding: 0px 10px;
   vertical-align: top;
   background: rgba(90, 90, 90, 0.3);
@@ -112,111 +115,15 @@ header #nav a {
   border-color: rgba(90, 90, 90, 0.1);
 }
 
-#welcome .helmholtz {
-  background-image: url("/images/helmholtz.png");
-  background-repeat: repeat-x;
-  background-position: center;
-}
-
-
-/*** DOCS ***/
-
-.docs {
-  margin-top: 50px;
-  max-width: 100%;
-  text-align: justify;
-  font-size: 0;
-}
-
-.docs div {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.docs:after{
-  content: '';
-  display: inline-block;
-  width: 100%;
-  height: 0;
-  font-size:0;
-  line-height:0;
-}
-
-.docs div {
-  vertical-align: top;
-  display: inline-block;
-  background: #eee;
-  color:  #222;
-  border-radius: 8px;
-  width: 580px;
-  font-size: small;
-}
-
-.docs nav {
-  vertical-align: top;
-  display: inline-block;
-  width: 150px;
-  font-size: small;
-}
-
-.docs nav h1 {
-  display: block;
-  margin-left: 0px;
-  margin-bottom: 2px;
-  font-size: normal;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  text-indent: 5px;
-}
-
-.docs nav span {
-  display: block;
-}
-
-.docs nav span a {
-  text-indent: 5px;
-  margin-top: 1px; 
-  margin-bottom: 1px; 
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 0px;
-  padding-left: 0px;
-  font-size: small;
-  color: #eee;
-  text-decoration: none;
-}
-
-.docs nav span a.triangle {
-  width: 0;
-  height: 0;
-  text-indent: 0px;
-  border-style: solid;
-  border-width: 6px 0 6px 10.4px;
-  border-color: transparent;
-}
-
-.docs nav span a.select {
-  width: 0;
-  height: 0;
-  text-indent: 0px;
-  border-style: solid;
-  border-width: 6px 0 6px 10.4px;
-  border-color: transparent transparent transparent #eee;
-}
-
 
 /*** GALLERY ***/
-
-#gallery h2 {
-  padding-top: 16px;
-  margin-bottom: 6px;
-}
 
 #gallery img {
   border: 1px solid #333;
   padding: 0px;
   margin: 2px;
-  width: 45%;
+  height: 240px;
+  width: 240px;
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%); 
   -o-filter: grayscale(100%); 
@@ -227,112 +134,4 @@ header #nav a {
   -webkit-filter: grayscale(0%);
   -moz-filter: grayscale(0%);
   -o-filter: grayscale(0%);
-} 
-
-
-/*** NEWS ***/
-
-#news ul.bubble {
-  margin: 0px;
-  padding: 0px;
-}
-
-#news li.bubble {
-  padding: 0px 10px;
-  list-style-type: none;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: normal;
-  background: rgba(90, 90, 90, 0.2);
-  border: 1px solid;
-  border-radius: 8px;
-  border-color: rgba(90, 90, 90, 0.6);
-  overflow: hidden;
-}
-
-#news li.bubble:hover, #news li.selected {
-  background: rgba(90, 90, 90, 0.6);
-}
-
-#news .more {
-  display: none;
-}
-
-#news .selected .more {
-  display: block;
-}
-
-#news .date {
-  color: #777;
-  float: right;
-  margin: 10px 0px;
-}
-
-#news .caption {
-  font-style: oblique;
-}
-
-#news figure {
-  width: 100%;
-  padding: 0px;
-  margin: 0px;
-}
-
-#news figure img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-#news figcaption {
-  font-style: oblique;
-  padding-top: 3px;
-  margin-top: 3px;
-}
-
-.videoWrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  padding-top: 0px;
-  height: 0;
-  border: 1px solid #333;
-}
-
-.videoWrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-
-/*** LARGE SCREEN ***/
-
-@media screen and (min-width: 750px) {
-  header table {
-    padding: 16px 0px;
-  }
-  header #nav li {
-    display: inline-block;
-  }
-  #welcome h1 {
-    font-size: 35px;
-  }
-  #gallery img {
-    width: 32%;
-  }
-  #news figure {
-    width: 350px;
-    float: right;
-    padding-left: 8px;
-    padding-bottom: 8px;
-  }
-}
-
-
-#page {
-  display: block;
-  max-width: 750px;
-  margin: 0px auto;
-  padding: 0px 10px;
 }

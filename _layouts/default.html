@@ -3,12 +3,12 @@ layout: body
 ---
 
 <header class="center">
-  <table>
+  <table style="width: 100%; margin-bottom: 32px;">
     <tr>
-      <td>
-        <a href="/"><img src="/images/nutils.png"></a>
+      <td style="text-align: left;">
+        <a href="/"><img src="/images/nutils.png" width="210" height="80"></a>
       </td>
-      <td id="nav">
+      <td style="text-align: right;">
         <ul>
         {% for tab in site.tabs %}
           <li {% if page.title == tab.title %}class="select"{% endif %}>
