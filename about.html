@@ -9,27 +9,50 @@ title: About
 <p>The Nutils project is a collaborative programming effort aimed
 at the creation of a modern, general purpose Python programming library for
 finite element applications. The nutils are under active development, and are
-presently in use for academic research by Phd and MSc students.</p>
+presently in use for both industrial applications and academic research.</p>
 
-<p>Identifying features are a heavily object oriented
-design, strict separation of topology and geometry, and CAS-like function
-arithmetic such as found in maple and mathematica. Primary design goals are:</p>
+<img src="/images/laplace.png" width="320" style="float: right;">
 
-<ul>
-<li><b>Readability</b>. Finite element scripts built on top of nutils should
-focus on work flow and maths, unobscured by finite element infrastructure.</li>
-<li><b>Flexibility</b>. The nutils are tools; they do not enforce a strict
-work flow. Missing components can be added locally without loosing
-interoperability.</li>
-<li><b>Compatibility</b>. Exposed objects are of native python type or allow
-for easy conversion to leverage third party tools.</li>
-<li><b>Speed</b>. Nutils are self-optimizing and support parallel
-computation. Typical scripting inefficiencies are discouraged by design.</li>
-</ul>
+<p>It is important to understand that Nutils is not a ready to use program. It
+does not have a user interface and no predetermined functionality. Instead, it
+is a collection of high level objects that can be mixed and matched to build
+any specific simulation as a Python script. Knowledge of both computational
+physics and general programming are required to use Nutils to its
+potential.</p>
 
-<p>For more information about the project contact <a
-href="mailto:info@nutils.org">info@nutils.org</a>, or dive right in with the
-example scripts in our <a href="https://github.com/nutils/nutils">github</a>
-repository.</p>
+<p>To illustrate this, the following fully functional script solves the Laplace
+problem ∬ ∇v·∇u = ∫ v f on a square domain with various Dirichlet and Neumann
+boundary conditions, using quadratic spline basis functions and and 8x8
+computational grid.</p>
+
+
+{% highlight python %}
+from nutils import mesh, function, plot
+
+# prepare domain, geometry, basis
+domain, geom = mesh.rectilinear( [range(9),range(9)] )
+basis = domain.basis( 'spline', degree=2 )
+
+# construct matrix, rhs, constraints
+matrix = domain.integrate( function.outer(basis.grad(geom)).sum(2), geometry=geom, ischeme='gauss2' )
+rhs = domain.boundary['right'].integrate( basis, geometry=geom, ischeme='gauss2' )
+cons = domain.boundary['left,bottom'].project( 0, onto=basis, geometry=geom, ischeme='gauss2' )
+
+# solve system
+lhs = matrix.solve( rhs, constrain=cons )
+sol = basis.dot(lhs)
+
+# plot solution
+points, colors = domain.elem_eval( [geom, sol], ischeme='bezier9', separate=True )
+with plot.PyPlot( 'solution' ) as plt:
+  plt.mesh( points, colors )
+  plt.colorbar()
+{% endhighlight %}
+
+<p>More elaborate examples can be found in the <a
+href="https://github.com/nutils/nutils/tree/master/examples">examples</a>
+directory of the code repository. Installation instructions as well as API
+documentation can be found at <a href="http://docs.nutils.org">docs.nutils.org</a>.
+
 
 </div>
