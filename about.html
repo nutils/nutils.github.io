@@ -6,25 +6,28 @@ title: About
 <div class="center">
 <h1>About Nutils</h1>
 
-<p>The Nutils project is a collaborative programming effort aimed
-at the creation of a modern, general purpose Python programming library for
-finite element applications. The nutils are under active development, and are
-presently in use for both industrial applications and academic research.</p>
+<p>Nutils is an open source project aimed at the creation of a modern, general
+purpose Python programming library for finite element applications. The project
+is led by <a href="http://evalf.com">Evalf Computing</a> and is being
+developed in close collaboration with academia, most notably the <a
+href="http://tue.nl">Technical University of Eindhoven</a>. Nutils is under
+active development and is presently in use for both industrial applications and
+academic research.</p>
 
 <img src="/images/laplace.png" width="320" style="float: right;">
 
-<p>It is important to understand that Nutils is not a ready to use program. It
-does not have a user interface and no predetermined functionality. Instead, it
-is a collection of high level objects that can be mixed and matched to build
-any specific simulation as a Python script. Knowledge of both computational
-physics and general programming are required to use Nutils to its
-potential.</p>
+<p>Nutils is MIT licenced and is free to use in any application. It is
+important to understand however that Nutils is not a ready to use program. It
+does not have a user interface and no predetermined functionality. What it is
+instead is a collection of high level objects that can be mixed, matched and
+extended to build any specific simulation in the form of a Python script.
+Knowledge of both computational physics and general programming are required to
+use Nutils to its potential.</p>
 
-<p>To illustrate this, the following fully functional script solves the Laplace
-problem ∬ ∇v·∇u = ∫ v f on a square domain with various Dirichlet and Neumann
-boundary conditions, using quadratic spline basis functions and and 8x8
-computational grid.</p>
-
+<p>To illustrate this workflow, the following fully functional script solves
+the Laplace problem ∬ ∇v·∇u = ∫ v f on a square domain with various Dirichlet
+and Neumann boundary conditions, using quadratic spline basis functions and and
+8x8 computational grid. The result is as shown in the figure.</p>
 
 {% highlight python %}
 from nutils import mesh, function, plot
@@ -34,13 +37,13 @@ domain, geom = mesh.rectilinear( [range(9),range(9)] )
 basis = domain.basis( 'spline', degree=2 )
 
 # construct matrix, rhs, constraints
-matrix = domain.integrate( function.outer(basis.grad(geom)).sum(2), geometry=geom, ischeme='gauss2' )
+matrix = domain.integrate( basis['i,k'] * basis['j,k'], geometry=geom, ischeme='gauss2' )
 rhs = domain.boundary['right'].integrate( basis, geometry=geom, ischeme='gauss2' )
 cons = domain.boundary['left,bottom'].project( 0, onto=basis, geometry=geom, ischeme='gauss2' )
 
 # solve system
 lhs = matrix.solve( rhs, constrain=cons )
-sol = basis.dot(lhs)
+sol = basis.dot( lhs )
 
 # plot solution
 points, colors = domain.elem_eval( [geom, sol], ischeme='bezier9', separate=True )
@@ -49,10 +52,13 @@ with plot.PyPlot( 'solution' ) as plt:
   plt.colorbar()
 {% endhighlight %}
 
-<p>More elaborate examples can be found in the <a
+<p>More elaborate examples including demonstrations of isogeometric analysis,
+the finite cell method, and goal based adaptivity can be found in the <a
 href="https://github.com/nutils/nutils/tree/master/examples">examples</a>
-directory of the code repository. Installation instructions as well as API
-documentation can be found at <a href="http://docs.nutils.org">docs.nutils.org</a>.
+directory of the code repository. Installation instructions as well as full API
+documentation (in progress) can be found at <a
+href="http://docs.nutils.org">docs.nutils.org</a>.<p>
 
+<p>For more information contact <a href="mailto:info@nutils.org">info@nutils.org</a>.</p>
 
 </div>
