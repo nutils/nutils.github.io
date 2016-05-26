@@ -12,11 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/css/syntax.css" media="all">
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <title>{{ site.shortname }} {{ page.title }}</title>
-    {% for script in site.scripts %}
-      <script type="text/javascript" src="/scripts/{{ script }}.js"></script>
-    {% endfor %}{% for script in page.scripts %}
-      <script type="text/javascript" src="/scripts/{{ script }}.js"></script>
-    {% endfor %}
+    <script type="text/javascript" src="/scripts/google_analytics.js"></script>
   </head>
   <body>
     {{ content }}

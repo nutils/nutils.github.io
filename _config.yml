@@ -4,18 +4,16 @@ author: Nutils
 email: info@nutils.org
 domain: www.nutils.org
 google_id: UA-45178960-1
-github: nutils
+permalink: none
 
 tabs:
   - title: About
     url: /about.html
   - title: Gallery
-    url: /gallery
+    url: /gallery.html
   - title: Science
     url: /science.html
   - title: Docs↪
     url: http://docs.nutils.org
   - title: Github↪
     url: http://github.com/nutils
-
-scripts: google_analytics

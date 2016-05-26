@@ -1,0 +1,13 @@
+---
+layout: default
+title: Gallery
+---
+
+<div id="gallery" class="center bwhover">
+<h1>Gallery of simulations</h1>
+{% for post in site.posts %}
+{% if post.thumb %}
+<a href="{{ post.url }}"><img src="/thumbs/{{ post.thumb }}.png"></a>
+{% endif %}
+{% endfor %}
+</div>

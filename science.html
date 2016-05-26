@@ -4,5 +4,23 @@ title: Science
 ---
 
 <div class="center">
-TODO.
+<h1>Scientific publications</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="columns bwhover">
+<ol reversed>
+{% for post in site.posts %}
+  {% if post.pub %}
+    <li style="padding-top: 10px;">
+    {% if post.thumb %}<a href="{{ post.url }}"><img src="/thumbs/{{ post.thumb }}.png" width="120" height="120" style="float: right; padding-left: 10px; padding-bottom: 10px;"></a>{% endif %}
+    {{ post.pub.author }}. <a href="{{ post.pub.url }}">{{ post.pub.title }}</a>. {{ post.pub.journal }}.
+    </li>
+  {% endif %}
+{% endfor %}
+</ol>
+</div>
 </div>
