@@ -5,22 +5,25 @@ title: Science
 
 <div class="center">
 <h1>Scientific publications</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>The flexibility and versatility of Nutils' toolset makes it the ideal suite
+for developing and testing new numerical techniques and formulations. This has
+led to an ever growing list of scientific publications in the fields of
+computational physics, applied mechanics, biomechanical modelling, marine
+engineering, and others. If your Nutils powered publication is no listed below
+please send an email to <a href="mailto:info@nutils.org">info@nutils.org</a> to
+have it included.
+</p>
 <div class="columns bwhover">
-<ol reversed>
+<dl>
 {% for post in site.posts %}
   {% if post.pub %}
-    <li style="padding-top: 10px;">
+    <dt style="color: gray;">{{ post.date | date: '%b %Y' }}
     {% if post.thumb %}<a href="{{ post.url }}"><img src="/thumbs/{{ post.thumb }}.png" width="120" height="120" style="float: right; padding-left: 10px; padding-bottom: 10px;"></a>{% endif %}
+    </dt><dd style="margin: 0px 0px 10px 2em;">
     {{ post.pub.author }}. <a href="{{ post.pub.url }}">{{ post.pub.title }}</a>. {{ post.pub.journal }}.
-    </li>
+    </dd>
   {% endif %}
 {% endfor %}
-</ol>
+</dl>
 </div>
 </div>
