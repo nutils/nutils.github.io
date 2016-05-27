@@ -12,9 +12,9 @@ is led by <a href="http://evalf.com">Evalf Computing</a> and is being
 developed in close collaboration with academia, most notably the <a
 href="http://tue.nl">Technical University of Eindhoven</a>. Nutils is under
 active development and is presently in use for both industrial applications and
-academic research.</p>
-
+academic research.
 <img src="/images/laplace.png" width="320" style="float: right;">
+</p>
 
 <p>Nutils is MIT licenced and is free to use in any application. It is
 important to understand however that Nutils is not a ready to use program. It
@@ -24,8 +24,8 @@ extended to build any specific simulation in the form of a Python script.
 Knowledge of both computational physics and general programming are required to
 use Nutils to its potential.</p>
 
-<p>To illustrate this workflow, the following fully functional script solves
-the Laplace problem ∬ ∇v·∇u = ∫ v f on a square domain with various Dirichlet
+<p>To illustrate the workflow, the following fully functional script solves
+the Laplace problem ∬ ∇v·∇u = ∫ v f on a square domain with mixed Dirichlet
 and Neumann boundary conditions, using quadratic spline basis functions and and
 8x8 computational grid. The result is as shown in the figure.</p>
 
@@ -36,13 +36,13 @@ from nutils import mesh, function, plot
 domain, geom = mesh.rectilinear( [range(9),range(9)] )
 basis = domain.basis( 'spline', degree=2 )
 
-# construct matrix, rhs, constraints
+# construct matrix, right hand side, constraints
 matrix = domain.integrate( basis['i,k'] * basis['j,k'], geometry=geom, ischeme='gauss2' )
 rhs = domain.boundary['right'].integrate( basis, geometry=geom, ischeme='gauss2' )
-cons = domain.boundary['left,bottom'].project( 0, onto=basis, geometry=geom, ischeme='gauss2' )
+con = domain.boundary['bottom'].project( 0, onto=basis, geometry=geom, ischeme='gauss2' )
 
 # solve system
-lhs = matrix.solve( rhs, constrain=cons )
+lhs = matrix.solve( rhs, constrain=con )
 sol = basis.dot( lhs )
 
 # plot solution
