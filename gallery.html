@@ -3,11 +3,13 @@ layout: default
 title: Gallery
 ---
 
-<div id="gallery" class="center bwhover">
+<div class="center">
 <h1>Gallery of simulations</h1>
+<div id="gallery" class="bwhover">
 {% for post in site.posts %}
 {% if post.thumb %}
 <a href="{{ post.url }}"><img src="/thumbs/{{ post.thumb }}.png"></a>
 {% endif %}
 {% endfor %}
+</div>
 </div>

@@ -92,6 +92,14 @@ td {
   .columns { column-count: 2; }
 }
 
+.conditionalfloat {
+  max-width: 320px;
+  margin: 0px auto;
+}
+@media screen and (min-width: 500px) {
+  .conditionalfloat { margin: 16px 40px; float: right; }
+}
+
 
 /*** HEADER ***/
 
@@ -144,8 +152,10 @@ header a {
   border: 1px solid #333;
   padding: 0px;
   margin: 2px;
-  height: 240px;
-  width: 240px;
+  width: calc(33.33% - 10px);
+}
+@media screen and (max-width: 500px) {
+  #gallery img { width: calc(50% - 8px); }
 }
 
 #gallery img:hover {
