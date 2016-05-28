@@ -5,10 +5,11 @@ layout: body
 <header class="center">
   <table style="width: 100%; margin-bottom: 32px;">
     <tr>
-      <td style="text-align: left;">
+      <td style="text-align: left; vertical-align: top;">
         <a href="/"><img src="/images/nutils.png" width="200" height="64"></a>
       </td>
-      <td style="text-align: right;">
+      <td style="text-align: right; vertical-align: middle;">
+        <input type="checkbox" id="burger">
         <ul>
         {% for tab in site.tabs %}
           <li {% if page.title == tab.title %}class="select"{% endif %}>
@@ -16,6 +17,7 @@ layout: body
           </li>
         {% endfor %}
         </ul>
+        <label for="burger"><img src="/images/hamburger.svg"></label>
       </td>
     </tr>
   </table>

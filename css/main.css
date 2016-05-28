@@ -2,11 +2,8 @@ body {
   background: black;
   color: white;
   font-family: Helvetica, Arial, sans-serif;
-  padding: 0px;
+  padding: 20px 0px;
   margin: 0px;
-}
-@media screen and (min-width: 750px) {
-  body { padding: 20px 0px; }
 }
 
 a {
@@ -103,17 +100,15 @@ td {
 
 /*** HEADER ***/
 
-header li {
+header ul li {
+  display: inline-block;
   list-style-type: none;
   font-size: 125%;
   text-align: center;
   padding: 5px 10px;
 }
-@media screen and (min-width: 750px) {
-  header li { display: inline-block; }
-}
 
-header li.select {
+header ul li.select {
   border-radius: 8px;
   background-color: #eee;
   color: #222;
@@ -121,6 +116,22 @@ header li.select {
 
 header a {
   font-weight: normal;
+}
+
+header input {
+  display: none;
+}
+
+header label {
+  display: none;
+}
+
+@media screen and (max-width: 750px) {
+  header label { display: inline-block; }
+  header ul { display: none; }
+  header ul li { display: list-item; }
+  #burger:checked + ul { display: inline-block; }
+  #burger:checked + ul + label { display: none; }
 }
 
 
