@@ -97,6 +97,10 @@ td {
   .conditionalfloat { margin: 16px 40px; float: right; }
 }
 
+dl.science dt {
+  clear: both;
+}
+
 
 /*** HEADER ***/
 
