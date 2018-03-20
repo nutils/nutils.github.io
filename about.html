@@ -33,25 +33,31 @@ and Neumann boundary conditions, using quadratic spline basis functions and and
 8x8 computational grid. The result is as shown in the figure.</p>
 
 {% highlight python %}
-from nutils import mesh, function, plot
+from nutils import mesh, function, solver, plot
 
-# prepare domain, geometry, basis
-domain, geom = mesh.rectilinear( [range(9),range(9)] )
-basis = domain.basis( 'spline', degree=2 )
+domain, geom = mesh.rectilinear([8, 8])
 
-# construct matrix, right hand side, constraints
-matrix = domain.integrate( basis['i,k'] * basis['j,k'], geometry=geom, ischeme='gauss2' )
-rhs = domain.boundary['right'].integrate( basis, geometry=geom, ischeme='gauss2' )
-con = domain.boundary['bottom'].project( 0, onto=basis, geometry=geom, ischeme='gauss2' )
+# create namespace
+ns = function.Namespace()
+ns.x = geom
+ns.basis = domain.basis('spline', degree=2)
+ns.u = 'basis_n ?dofs_n'
 
-# solve system
-lhs = matrix.solve( rhs, constrain=con )
-sol = basis.dot( lhs )
+# construct residual
+res = domain.integral('-basis_n,i u_,i' @ ns, geometry=ns.x, degree=2)
+res += domain.boundary['right'].integral('basis_n' @ ns, geometry=ns.x, degree=2)
+
+# construct dirichlet constraints
+sqr = domain.boundary['bottom'].integral('u^2' @ ns, geometry=ns.x, degree=4)
+cons = solver.optimize('dofs', sqr, droptol=1e-15)
+
+# find dofs such that res == 0
+dofs = solver.solve_linear('dofs', res, constrain=cons)
 
 # plot solution
-points, colors = domain.elem_eval( [geom, sol], ischeme='bezier9', separate=True )
-with plot.PyPlot( 'solution' ) as plt:
-  plt.mesh( points, colors )
+x, u = domain.elem_eval([ns.x, ns.u], ischeme='bezier9', arguments=dict(dofs=dofs), separate=True)
+with plot.PyPlot('solution') as plt:
+  plt.mesh(x, u, cmap='jet')
   plt.colorbar()
 {% endhighlight %}
 
