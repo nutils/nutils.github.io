@@ -99,6 +99,12 @@ td {
 
 dl.science dt {
   clear: both;
+  break-after: avoid;
+}
+
+dl.science dd {
+  break-inside: avoid;
+  break-before: avoid;
 }
 
 
